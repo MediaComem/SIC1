@@ -1,10 +1,10 @@
 # SIC1 - SIG et Cartographie : Géovisualisation
-Material for the SIC1 course for the joint HES-SO - UNIGE Master's degree "Développement territorial"
+Support pour le cours SIC1 du master conjoint HES-SO - UNIGE en Développement territorial
 
 ## Introduction
 
-## Part 1 - Cesium.js
+## [Partie 1 - Cesium.js](Cesium.md)
 
-## Part 2 - A-Frame VR
+## [Partie 2 - A-Frame VR](A-FrameVR.md)
 
-## Part 3 - A-Frame AR
+## [Partie 3 - A-Frame AR](A-FrameAR.md)

@@ -1,1 +1,1 @@
-# Part 2 - A-Frame VR
+# Partie 2 - A-Frame VR

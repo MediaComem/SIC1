@@ -1,1 +1,1 @@
-# Part 1 - Cesium.js
+# Partie 1 - Cesium.js
