@@ -1,8 +1,20 @@
 # Introduction à la VR
 
-## Table des matières
+## Table des matières <!-- omit in toc -->
 
-[TOC]
+- [Introduction à la VR](#introduction-à-la-vr)
+  - [Technologies VR](#technologies-vr)
+    - [Degrés de liberté (DoF)](#degrés-de-liberté-dof)
+    - [Suivi de position](#suivi-de-position)
+    - [Contrôleurs et systèmes d'interaction](#contrôleurs-et-systèmes-dinteraction)
+  - [Déplacements](#déplacements)
+    - [Principales problématiques](#principales-problématiques)
+    - [Déplacements et (cyber-)cinétose](#déplacements-et-cyber-cinétose)
+      - [Téléportation](#téléportation)
+      - [Simulateurs](#simulateurs)
+      - [Déplacements libres](#déplacements-libres)
+      - [Autres artifices](#autres-artifices)
+
 
 ## Technologies VR
 Les textes et concepts de ce chapitre sont tirés du [cours VR](https://github.com/Chabloz/VR-A-Frame/blob/master/EtatArt.md#hardware) de Nicolas Chabloz.

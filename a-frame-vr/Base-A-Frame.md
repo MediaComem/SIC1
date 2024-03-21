@@ -2,9 +2,21 @@
 
 A-Frame est un framework web open-source dédié au développement d'expériences en réalité virtuelle et augmentée. Basé sur HTML et Three.js, il permet facilement de créer du contenu en VR.
 
-## Table des matières
+## Table des matières <!-- omit in toc -->
 
-[TOC]
+- [Bases de A-Frame](#bases-de-a-frame)
+  - [Architecture](#architecture)
+  - [Entité](#entité)
+  - [Composant](#composant)
+    - [Enregistrer un composant](#enregistrer-un-composant)
+  - [Système](#système)
+    - [Enregistrer un système](#enregistrer-un-système)
+  - [Interactions et événements](#interactions-et-événements)
+  - [Scène](#scène)
+    - [Support caméra](#support-caméra)
+  - [Gestion d'assets](#gestion-dassets)
+  - [Inspecteur visuel](#inspecteur-visuel)
+
 
 ## Architecture
 
@@ -211,6 +223,10 @@ Le positionnement des entités se fait à partir d'un système de coordonnée ba
 
 ![Système de coordonnées "main droite", what-when-how.com](../img/326137a8-ab49-11e6-9b76-4e3a65f333d9.jpg)
 
+### Support caméra
+
+Ce système d'héritage requiert ainsi de placer la caméra et les mains dans une sorte de support (camera rig), une entité parente, qui assurera la cohérence dans les déplacements et rotation de ces éléments.
+
 ## Gestion d'assets
 
 A-Frame offre la possibilité de charger différents assets, comme du son, des images, des vidéos, des matériaux et des modèles 3D.
@@ -245,3 +261,7 @@ A-Frame offre un outil de visualisation, qui permet de voir sa scène sous d'aut
 
 ![inspecteur visuel d'A-Frame, A-Frame](../img/visual-inspector-aframe.png)
 
+---
+
+[Chapitre précédant : Introduction à la VR](Introduction-VR.md)\
+[Chapitre suivant : Exercice pratique VR](Pratique-VR.md)
