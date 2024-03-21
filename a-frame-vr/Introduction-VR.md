@@ -1,11 +1,15 @@
 # Introduction à la VR
 
+## Table des matières
+
+[TOC]
+
 ## Technologies VR
 Les textes et concepts de ce chapitre sont tirés du [cours VR](https://github.com/Chabloz/VR-A-Frame/blob/master/EtatArt.md#hardware) de Nicolas Chabloz.
 
 ### Degrés de liberté (DoF)
 
-![Les six degrés de liberté dans un espace à trois dimensions, @author:GregorDS, Wikipedia](./img/6DOF.png)
+![Les six degrés de liberté dans un espace à trois dimensions, @author:GregorDS, Wikipedia](../img/6DOF.png)
 
 Les degrés de liberté font référence au nombre et types de mouvements réalisables dans un espace 3D. En réalité virtuelle, il existe différentes possibilités :
 

@@ -2,6 +2,10 @@
 
 A-Frame est un framework web open-source dédié au développement d'expériences en réalité virtuelle et augmentée. Basé sur HTML et Three.js, il permet facilement de créer du contenu en VR.
 
+## Table des matières
+
+[TOC]
+
 ## Architecture
 
 A-Frame adopte une architecture Entity-Component-System. Ce modèle se compose des 3 éléments suivants :
@@ -33,7 +37,7 @@ Les composants sont attachés aux entités comme des attributs sur des élément
 
 Selon leur nature, ils peuvent accueillir des données sous forme de propriétés.
 
-### Enregistrer d'un composant
+### Enregistrer un composant
 
 Afin d'illustrer les différentes partie d'un composant et leurs fonctions, on va créer un composant `box`.
 
@@ -43,7 +47,7 @@ Dans un premier temps, on enregistre un composant avec la fonction suivante :
             // code
         })
 
-On utilise un schema pour enregistrer des propriétés qui peuvent être transmise par l'entité. 
+On utilise un `schema` pour enregistrer des propriétés qui peuvent être transmise par l'entité.
 
 > [!NOTE]
 > Les unités sont en mètres.
@@ -61,7 +65,7 @@ Les propriétés multiples sont passées ainsi :
 
     <a-entity box="width: 2; height: 3"></a-entity>
 
-La fonction init est appelée une seule fois, lors de l'initialisation du composant. Pour `box`, l'objet 3D est créé avec three.js. Consultez le [manuel de three.js](https://threejs.org/manual/#en/primitives) pour en apprendre plus.
+La fonction `init` est appelée une seule fois, lors de l'initialisation du composant. Pour `box`, l'objet 3D est créé avec three.js. Consultez le [manuel de three.js](https://threejs.org/manual/#en/primitives) pour en apprendre plus.
 
         AFRAME.registerComponent('box', {
             schema: {...},
@@ -78,7 +82,7 @@ La fonction init est appelée une seule fois, lors de l'initialisation du compos
             },
         });
 
-La fonction update est appelée à l'initialisation et quand les propriétés changent. Dans le cas de `box`, on met à jour le mesh de l'objet.
+La fonction `update` est appelée à l'initialisation et quand les propriétés changent. Dans le cas de `box`, on met à jour le mesh de l'objet.
 
         AFRAME.registerComponent('box', {
             schema: {...},
@@ -89,7 +93,7 @@ La fonction update est appelée à l'initialisation et quand les propriétés ch
                 let data = this.data;
                 let el = this.el;
 
-                // Si `oldData` est vide, cela signifie qu'on est dans la phase d'initialisation, et qu'il n'y a donc rien à mettre à jour. 
+                // Si `oldData` est vide, cela signifie qu'on est dans la phase d'initialisation, et qu'il n'y a donc rien à mettre à jour.
                 if (Object.keys(oldData).length === 0) { return; }
 
                 // Mise à jour de la géométrie lors du changement des propriétés
@@ -121,6 +125,9 @@ Afin d'optimiser le rendu de la scène, il est nécessaire de supprimer le mesh 
 
 Le composant `box` est terminé ! Les [composants](https://aframe.io/docs/1.5.0/core/component.html) offrent d'autres fonctions utilitaires, comme `tick()`, `play()` ou `pause()`.
 
+> [!TIP]
+> Pas besoin de réinventer la roue ! Il existe de multiples composants natifs à A-Frame et bien d'autres ont déjà été créés par la communauté, comme [a-frame-extras](https://github.com/c-frame/aframe-extras) et [a-frame-physics-system](https://github.com/n5ro/aframe-physics-system).
+
 ## Système
 
 On peut accéder à un système via la scène :
@@ -131,9 +138,17 @@ On peut accéder à un système via la scène :
 
 Un système est enregistré de façon similaire à un composant. Si le nom du système correspond au nom du composant, on peut y accéder directement depuis le composant via `this.system`.
 
-    AFRAME.registerSystem('nom-systeme', {
+    AFRAME.registerSystem('camera', {
         schema: {},
         init: function () {},
+        ...
+    });
+
+    AFRAME.registerComponent('camera', {
+        schema: {...},
+        init: function () {
+            console.log(this.system)
+        },
         ...
     });
 
@@ -142,7 +157,7 @@ Un système est enregistré de façon similaire à un composant. Si le nom du sy
 Quand on manipule les différentes entités, il est préférable de le faire dans un composant. Comme A-Frame est basé sur HTML, on peut accéder aux entités en utilisant des méthode de sélection comme `.querySelector()` par exemple.
 
 > [!TIP]
-> À l'intérieur d'un composant, on a un accès direct à l'entité liée via `this.el` et à la scène via `this.el.sceneEl`.
+> À l'intérieur d'un composant, on a accès directement à l'entité liée via `this.el` et à la scène via `this.el.sceneEl`.
 
     let boxes = this.el.sceneEl.querySelectorAll('a-box');
 
@@ -171,11 +186,62 @@ En ce qui concerne les événements, on peut en émettre avec la fonction `.emit
         console.log('Entity collided with', event.detail.collidingEntity);
     });
 
-## Scène basique
+## Scène
 
-## Modèles 3D
+Une scène est construite avec l'entité `<a-scene>` dans le `<body>` d'une fichier HTML. Elle constitue l'élément racine de toute entité. Elle comprend une caméra `<a-camera>` et des lumières `<a-light>` par défaut, qui sont remplacés si l'on déclare explicitement ces primitives.
+
+On prend, par exemple, une primitive `<a-box>` qui fait apparaître une boîte dans la scène.
+
+    <a-scene>
+        <a-box color="red" rotation="0 45 45" scale="2 2 2"></a-box>
+    </a-scene>
+
+Une entité placée à l'intérieur d'une autre hérite de ses transformations (position, scale, rotation, etc.) Dans l'exemple suivant, la sphère aura la même position, la même rotation et la même échelle que la boîte parente.
+
+> [!IMPORTANT]
+> Si l'on transforme l'entitée enfant, le point de départ de ses transformations est celui de l'entité parente.
+
+    <a-scene>
+        <a-box position="0 2 0" rotation="0 45 45" scale="2 4 2">
+            <a-sphere></a-sphere>
+        </a-box>
+    </a-scene>
+
+Le positionnement des entités se fait à partir d'un système de coordonnée basé sur la main droite. Les valeurs positives vont donc à droite (X), en haut (Y) et contre nous (Z).
+
+![Système de coordonnées "main droite", what-when-how.com](../img/326137a8-ab49-11e6-9b76-4e3a65f333d9.jpg)
 
 ## Gestion d'assets
 
-## Animation
+A-Frame offre la possibilité de charger différents assets, comme du son, des images, des vidéos, des matériaux et des modèles 3D.
+
+Le framework possède un système de gestion d'assets, qui permet de regrouper, pré-charger et mettre en cache les assets, ce qui assure de meilleures performance.
+
+Afin d'utiliser ce système, les assets sont placés dans une entité `<a-assets>`.
+
+    <a-scene>
+
+        <!-- Système de gestion d'assets -->
+        <a-assets>
+            <!-- Modèle 3D au format GLTF -->
+            <a-asset-item id="horse-gltf" src="horse.gltf"></a-asset-item>
+
+            <audio id="neigh" src="neigh.mp3"></audio>
+            <img id="advertisement" src="ad.png">
+            <video id="kentucky-derby" src="derby.mp4"></video>
+        </a-assets>
+
+        <!-- Scene -->
+        <a-entity gltf-model="#horse-gltf"></a-entity>
+        <a-sound src="#neigh"></a-sound>
+        <a-plane src="#advertisement"></a-plane>
+        <a-entity geometry="primitive: plane" material="src: #kentucky-derby"></a-entity>
+
+    </a-scene>
+
+## Inspecteur visuel
+
+A-Frame offre un outil de visualisation, qui permet de voir sa scène sous d'autres angles et de faciliter ainsi le développement.
+
+![inspecteur visuel d'A-Frame, A-Frame](../img/visual-inspector-aframe.png)
 
