@@ -17,7 +17,6 @@ A-Frame est un framework web open-source dédié au développement d'expérience
   - [Gestion d'assets](#gestion-dassets)
   - [Inspecteur visuel](#inspecteur-visuel)
 
-
 ## Architecture
 
 A-Frame adopte une architecture Entity-Component-System. Ce modèle se compose des 3 éléments suivants :
@@ -37,7 +36,7 @@ La syntaxe de base d'une entité se rapproche d'une balise HTML :
 
     <a-entity></a-entity>
 
-Il existe cependant des éléments de base préconstruits, appelés _primitives_, qui permettent de construire facilement une scène sans devoir plonger dans l'architecture sous-jacente. On retrouve notamment des éléments tels que `a-box`, `a-sphere` ou même `a-sky`.
+Il existe cependant des éléments de base préconstruits, appelés _primitives_, qui permettent de construire facilement une scène sans devoir plonger dans l'architecture sous-jacente. On retrouve notamment des éléments tels que `<a-box>`, `<a-sphere>` ou même `<a-sky>`.
 
 Consultez la doc pour parcourir les primitives existantes (en bas du menu) ou créer des [primitives personnalisées](https://aframe.io/docs/1.5.0/introduction/html-and-primitives.html#registering-a-primitive).
 
@@ -51,10 +50,11 @@ On prend, par exemple, une primitive `<a-box>` qui fait apparaître une boîte d
         <a-box color="red" rotation="0 45 45" scale="2 2 2"></a-box>
     </a-scene>
 
-Une entité placée à l'intérieur d'une autre hérite de ses transformations (position, scale, rotation, etc.) Dans l'exemple suivant, la sphère aura la même position, la même rotation et la même échelle que la boîte parente.
 
 > [!IMPORTANT]
-> Si l'on transforme l'entitée enfant, le point de départ de ses transformations est celui de l'entité parente.
+> Une entité placée à l'intérieur d'une autre hérite de ses transformations (position, scale, rotation, etc.)
+
+Dans l'exemple suivant, la sphère aura la même position, la même rotation et la même échelle que la boîte parente.
 
     <a-scene>
         <a-box position="0 2 0" rotation="0 45 45" scale="2 4 2">
@@ -79,8 +79,10 @@ Les composants sont attachés aux entités comme des attributs sur des élément
 Selon leur nature, ils peuvent accueillir des données sous forme de propriétés.
 
 > ### :computer: Exercice
+> 
 > Insérer une primitive `<a-box>` dans votre scène. Placez-là devant vous et donner lui une couleur de votre choix.
 > 
+> NB : en 3D, vous pouvez vous déplacer avec les touches wasd.
 
 ### Enregistrer un composant
 
