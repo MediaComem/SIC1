@@ -5,18 +5,21 @@ A-Frame est un framework web open-source dédié au développement d'expérience
 ## Table des matières <!-- omit in toc -->
 
 - [Bases de A-Frame](#bases-de-a-frame)
+  - [Prérequis](#prérequis)
   - [Architecture](#architecture)
   - [Entité](#entité)
   - [Scène](#scène)
     - [Support caméra](#support-caméra)
   - [Composant](#composant)
-    - [:computer: Exercice](#computer-exercice)
     - [Enregistrer un composant](#enregistrer-un-composant)
+  - [Interactions et événements](#interactions-et-événements)
   - [Système](#système)
     - [Enregistrer un système](#enregistrer-un-système)
-  - [Interactions et événements](#interactions-et-événements)
   - [Gestion d'assets](#gestion-dassets)
   - [Inspecteur visuel](#inspecteur-visuel)
+
+## Prérequis
+Afin que vous puissiez suivre les exercices proposés au fur et à mesure, clonez (ou forkez) le repo [boilerplate pour Vue et A-Frame](https://github.com/Meryl-D/a-frame-vite-vue-boilerplate).
 
 ## Architecture
 
@@ -71,138 +74,70 @@ Le positionnement des entités se fait à partir d'un système de coordonnée ba
 
 Ce système d'héritage requiert ainsi de placer la caméra et les mains dans une sorte de support (camera rig), une entité parente, qui assurera la cohérence dans les déplacements et rotation de ces éléments.
 
+> ### :computer: Exercice
+> 
+> Insérer une primitive `<a-box>` dans votre scène.
+> 
+> Note : Sur un ordinateur, déplacez-vous avec les touches `wasd` pour voir le cube.
+
 ## Composant
 
-Les composants sont attachés aux entités comme des attributs sur des éléments HTML.
+Les composants sont attachés aux entités comme des attributs sur des éléments HTML. Ils peuvent accueillir des données personnalisées sous forme de propriétés.
 
-    <a-entity position="0 0 1"></a-entity>
-
-Selon leur nature, ils peuvent accueillir des données sous forme de propriétés.
-
----
-
-### :computer: Exercice
-
-Insérer une primitive `<a-box>` dans votre scène. Placez-là devant vous et donner lui une couleur de votre choix.
-
-*NB : en 3D, vous pouvez vous déplacer avec les touches wasd.*
-
----
-
-### Enregistrer un composant
-
-Afin d'illustrer les différentes partie d'un composant et leurs fonctions, on va créer un composant `box`.
-
-Dans un premier temps, on enregistre un composant avec la fonction suivante :
-
-        AFRAME.registerComponent('box', {
-            // code
-        })
-
-On utilise un `schema` pour enregistrer des propriétés qui peuvent être transmise par l'entité.
-
-> [!NOTE]
-> Les unités sont en mètres.
-
-    AFRAME.registerComponent('box', {
-        schema: {
-            width: {type: 'number', default: 1},
-            height: {type: 'number', default: 1},
-            depth: {type: 'number', default: 1},
-            color: {type: 'color', default: '#AAA'}
-        },
-    });
+    <a-box position="0 0 1"></a-box>
 
 Les propriétés multiples sont passées ainsi :
 
     <a-entity box="width: 2; height: 3"></a-entity>
 
-La fonction `init` est appelée une seule fois, lors de l'initialisation du composant. Pour `box`, l'objet 3D est créé avec three.js. Consultez le [manuel de three.js](https://threejs.org/manual/#en/primitives) pour en apprendre plus.
+> [!NOTE]
+> Les unités sont en mètres.
 
-        AFRAME.registerComponent('box', {
-            schema: {...},
+> ### :computer: Exercice
+> 
+> Modifiez la position de la box placée précédemment pour qu'elle apparaisse devant vous (au chargement). Ajoutez lui également une couleur de votre choix.
+> 
 
-            init: function () {
-                let data = this.data; // propriétés
-                let el = this.el; // entité liée
+### Enregistrer un composant
 
-                this.geometry = new THREE.BoxGeometry(data.width, data.height, data.depth);
-                this.material = new THREE.MeshStandardMaterial({color: data.color});
-                this.mesh = new THREE.Mesh(this.geometry, this.material);
+Comme pour les primitives, il est possible de créer nous-même des composants avec la fonction `registerComponent`.
 
-                el.setObject3D('mesh', this.mesh);
+
+        AFRAME.registerComponent('log', {
+            schema: {
+                message: { 
+                    type: 'string',
+                    default: 'Hello, World!'
+                    }
             },
-        });
+            init: function () {
+                console.log(this.data.message)
+            },
+            update: function (oldData) {...}
 
-La fonction `update` est appelée à l'initialisation et quand les propriétés changent. Dans le cas de `box`, on met à jour le mesh de l'objet.
+        })
 
-        AFRAME.registerComponent('box', {
-            schema: {...},
+Une fois enregistré le composant peut être utilisé.
 
-            init: function () {...},
+    <a-entity log="message: Hello everyone!"></a-entity>
 
-            update: function (oldData) {
-                let data = this.data;
-                let el = this.el;
+On utilise un `schema` pour enregistrer des propriétés qui peuvent être transmise par l'entité. Dans le composant, on accède aux propriétés via `this.data`.
 
-                // Si `oldData` est vide, cela signifie qu'on est dans la phase d'initialisation, et qu'il n'y a donc rien à mettre à jour.
-                if (Object.keys(oldData).length === 0) { return; }
+La fonction `init` est appelée une seule fois, lors de l'initialisation du composant. Si on veut changer dynamiquement les propriétés passées, on peut mettre à jour le composant avec la fonction `update`.
 
-                // Mise à jour de la géométrie lors du changement des propriétés
-                if (data.width !== oldData.width ||
-                    data.height !== oldData.height ||
-                    data.depth !== oldData.depth) {
-                el.getObject3D('mesh').geometry = new THREE.BoxGeometry(data.width, data.height, data.depth);
-                }
-
-                // Mise à jour du matériau
-                if (data.color !== oldData.color) {
-                el.getObject3D('mesh').material.color = new THREE.Color(data.color);
-                }
-            }
-        });
-
-Afin d'optimiser le rendu de la scène, il est nécessaire de supprimer le mesh quand l'entité est supprimée.
-
-    AFRAME.registerComponent('box', {
-        schema: {...},
-
-        init: function () {...},
-        update: function (oldData) {...},
-
-        remove: function () {
-            this.el.removeObject3D('mesh');
-        }
-    });
-
-Le composant `box` est terminé ! Les [composants](https://aframe.io/docs/1.5.0/core/component.html) offrent d'autres fonctions utilitaires, comme `tick()`, `play()` ou `pause()`.
+Les [composants](https://aframe.io/docs/1.5.0/core/component.html) offrent également d'autres fonctions utilitaires, comme `tick()`, `play()` ou `pause()`. 
 
 > [!TIP]
-> Pas besoin de réinventer la roue ! Il existe de multiples composants natifs à A-Frame et bien d'autres ont déjà été créés par la communauté, comme [a-frame-extras](https://github.com/c-frame/aframe-extras) et [a-frame-physics-system](https://github.com/n5ro/aframe-physics-system).
+> Pas besoin de réinventer la roue ! Il existe de multiples composants natifs à A-Frame et bien d'autres ont déjà été créés par la communauté, comme [a-frame-extras](https://github.com/c-frame/aframe-extras) et [physx](https://github.com/c-frame/physx).
 
-## Système
-
-On peut accéder à un système via la scène :
-
-    document.querySelector('a-scene').systems[systemName];
-
-### Enregistrer un système
-
-Un système est enregistré de façon similaire à un composant. Si le nom du système correspond au nom du composant, on peut y accéder directement depuis le composant via `this.system`.
-
-    AFRAME.registerSystem('camera', {
-        schema: {},
-        init: function () {},
-        ...
-    });
-
-    AFRAME.registerComponent('camera', {
-        schema: {...},
-        init: function () {
-            console.log(this.system)
-        },
-        ...
-    });
+> ### :computer: Exercice
+> 
+> Créer un nouveau fichier nommé `clickable.js` dans le dossier `aframe`. Celui-ci permettera d'indiquer visuellement si un élément peut être "cliqué".
+>
+> Dans `schema`, ajouter une propriété `color` de type `color` et la couleur par défaut de votre choix (différente de celle du cube).
+>
+> Avant de continuer, il faut comprendre comment fonctionne les interactions et les événements dans A-Frame.
+>
 
 ## Interactions et événements
 
@@ -226,7 +161,7 @@ Pour attacher un composant à une entité ou le mettre à jour, on utilise la m�
     });
 
 > [!IMPORTANT]
-> Pour des raisons de performances, il est préférable de mettre à jour les valeurs de position, rotation, scale et visible via three.js directement.
+> Pour des raisons de performances, il est préférable de mettre à jour les valeurs de position, rotation, échelle (scale) et visibilité (visible) via three.js directement.
 
     el.object3D.position.x += 5
 
@@ -236,6 +171,62 @@ En ce qui concerne les événements, on peut en émettre avec la fonction `.emit
 
     el.addEventListener('physicscollided', event => {
         console.log('Entity collided with', event.detail.collidingEntity);
+    });
+
+> ### :computer: Exercice
+> 
+> Reprenons notre composant `clickable`. Nous allons créer 2 fonctions `onEnter` et `onLeave`, qui seront respectivement appelées lors des événements `mouseenter` et `mouseleave`. Dans la fonction `init`, nous allons lier (bind) les événements au composant pour pouvoir utiliser `this`. Cela peut être fait ainsi (à faire également pour onLeave) :
+
+    this.onEnter = this.onEnter.bind(this);
+    this.el.addEventListener('mouseenter', this.onEnter);
+
+> Dans la fonction onEnter, on va vérifier si on utilise le raycaster ou le curseur (VR ou 3D) pour ensuite changer la couleur.
+>
+  onEnter: function (evt) {
+    const cursor = evt.detail.cursorEl;
+    if (cursor.getAttribute('raycaster').showLine) {
+      this.savedColor = cursor.getAttribute('raycaster').lineColor;
+      cursor.setAttribute('raycaster', 'lineColor', this.data.color);
+    } else {
+      this.savedColor = cursor.getAttribute('material').color;
+      cursor.setAttribute('material', 'color', this.data.color);
+    }
+  },
+
+> En se basant sur la fonction `onEnter`, écrivez le contenu de `onLeave` pour revenir à la couleur de base.
+>
+> Enfin, pour des raisons de performences, on supprime les `eventListeners` lorsque l'entité est enlevée de la scène.
+>
+  remove: function () {
+    this.el.removeEventListener('mouseenter', this.onEnter);
+    this.el.removeEventListener('mouseleave', this.onLeave);
+  },
+
+> Vous pouvez tester votre composant en l'attachant au cube présent dans votre scène.
+
+
+## Système
+
+On peut accéder à un système via la scène :
+
+    document.querySelector('a-scene').systems[systemName];
+
+### Enregistrer un système
+
+Un système est enregistré de façon similaire à un composant. Si le nom du système correspond au nom du composant, on peut y accéder directement depuis le composant via `this.system`.
+
+    AFRAME.registerSystem('camera', {
+        schema: {},
+        init: function () {},
+        ...
+    });
+
+    AFRAME.registerComponent('camera', {
+        schema: {...},
+        init: function () {
+            console.log(this.system)
+        },
+        ...
     });
 
 ## Gestion d'assets
