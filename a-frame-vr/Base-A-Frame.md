@@ -10,6 +10,7 @@ A-Frame est un framework web open-source dédié au développement d'expérience
   - [Scène](#scène)
     - [Support caméra](#support-caméra)
   - [Composant](#composant)
+    - [:computer: Exercice](#computer-exercice)
     - [Enregistrer un composant](#enregistrer-un-composant)
   - [Système](#système)
     - [Enregistrer un système](#enregistrer-un-système)
@@ -78,11 +79,15 @@ Les composants sont attachés aux entités comme des attributs sur des élément
 
 Selon leur nature, ils peuvent accueillir des données sous forme de propriétés.
 
-> ### :computer: Exercice
-> 
-> Insérer une primitive `<a-box>` dans votre scène. Placez-là devant vous et donner lui une couleur de votre choix.
-> 
-> NB : en 3D, vous pouvez vous déplacer avec les touches wasd.
+---
+
+### :computer: Exercice
+
+Insérer une primitive `<a-box>` dans votre scène. Placez-là devant vous et donner lui une couleur de votre choix.
+
+*NB : en 3D, vous pouvez vous déplacer avec les touches wasd.*
+
+---
 
 ### Enregistrer un composant
 
