@@ -132,7 +132,7 @@ Les [composants](https://aframe.io/docs/1.5.0/core/component.html) offrent égal
 
 > ### :computer: Exercice
 > 
-> Créer un nouveau fichier nommé `clickable.js` dans le dossier `aframe`. Celui-ci permettera d'indiquer visuellement si un élément peut être "cliqué".
+> Créer un nouveau composant nommé `clickable` dans le dossier `aframe`. Celui-ci permettera d'indiquer visuellement si un élément peut être "cliqué".
 >
 > Dans `schema`, ajouter une propriété `color` de type `color` et la couleur par défaut de votre choix (différente de celle du cube).
 >
