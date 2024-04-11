@@ -7,13 +7,13 @@ A-Frame est un framework web open-source dédié au développement d'expérience
 - [Bases de A-Frame](#bases-de-a-frame)
   - [Architecture](#architecture)
   - [Entité](#entité)
+  - [Scène](#scène)
+    - [Support caméra](#support-caméra)
   - [Composant](#composant)
     - [Enregistrer un composant](#enregistrer-un-composant)
   - [Système](#système)
     - [Enregistrer un système](#enregistrer-un-système)
   - [Interactions et événements](#interactions-et-événements)
-  - [Scène](#scène)
-    - [Support caméra](#support-caméra)
   - [Gestion d'assets](#gestion-dassets)
   - [Inspecteur visuel](#inspecteur-visuel)
 
@@ -41,6 +41,35 @@ Il existe cependant des éléments de base préconstruits, appelés _primitives_
 
 Consultez la doc pour parcourir les primitives existantes (en bas du menu) ou créer des [primitives personnalisées](https://aframe.io/docs/1.5.0/introduction/html-and-primitives.html#registering-a-primitive).
 
+## Scène
+
+Une scène est construite avec l'entité `<a-scene>` dans le `<body>` d'une fichier HTML. Elle constitue l'élément racine de toute entité. Elle comprend une caméra `<a-camera>` et des lumières `<a-light>` par défaut, qui sont remplacés si l'on déclare explicitement ces primitives.
+
+On prend, par exemple, une primitive `<a-box>` qui fait apparaître une boîte dans la scène.
+
+    <a-scene>
+        <a-box color="red" rotation="0 45 45" scale="2 2 2"></a-box>
+    </a-scene>
+
+Une entité placée à l'intérieur d'une autre hérite de ses transformations (position, scale, rotation, etc.) Dans l'exemple suivant, la sphère aura la même position, la même rotation et la même échelle que la boîte parente.
+
+> [!IMPORTANT]
+> Si l'on transforme l'entitée enfant, le point de départ de ses transformations est celui de l'entité parente.
+
+    <a-scene>
+        <a-box position="0 2 0" rotation="0 45 45" scale="2 4 2">
+            <a-sphere></a-sphere>
+        </a-box>
+    </a-scene>
+
+Le positionnement des entités se fait à partir d'un système de coordonnée basé sur la main droite. Les valeurs positives vont donc à droite (X), en haut (Y) et contre nous (Z).
+
+![Système de coordonnées "main droite", what-when-how.com](../img/326137a8-ab49-11e6-9b76-4e3a65f333d9.jpg)
+
+### Support caméra
+
+Ce système d'héritage requiert ainsi de placer la caméra et les mains dans une sorte de support (camera rig), une entité parente, qui assurera la cohérence dans les déplacements et rotation de ces éléments.
+
 ## Composant
 
 Les composants sont attachés aux entités comme des attributs sur des éléments HTML.
@@ -48,6 +77,10 @@ Les composants sont attachés aux entités comme des attributs sur des élément
     <a-entity position="0 0 1"></a-entity>
 
 Selon leur nature, ils peuvent accueillir des données sous forme de propriétés.
+
+> ### :computer: Exercice
+> Insérer une primitive `<a-box>` dans votre scène. Placez-là devant vous et donner lui une couleur de votre choix.
+> 
 
 ### Enregistrer un composant
 
@@ -198,35 +231,6 @@ En ce qui concerne les événements, on peut en émettre avec la fonction `.emit
         console.log('Entity collided with', event.detail.collidingEntity);
     });
 
-## Scène
-
-Une scène est construite avec l'entité `<a-scene>` dans le `<body>` d'une fichier HTML. Elle constitue l'élément racine de toute entité. Elle comprend une caméra `<a-camera>` et des lumières `<a-light>` par défaut, qui sont remplacés si l'on déclare explicitement ces primitives.
-
-On prend, par exemple, une primitive `<a-box>` qui fait apparaître une boîte dans la scène.
-
-    <a-scene>
-        <a-box color="red" rotation="0 45 45" scale="2 2 2"></a-box>
-    </a-scene>
-
-Une entité placée à l'intérieur d'une autre hérite de ses transformations (position, scale, rotation, etc.) Dans l'exemple suivant, la sphère aura la même position, la même rotation et la même échelle que la boîte parente.
-
-> [!IMPORTANT]
-> Si l'on transforme l'entitée enfant, le point de départ de ses transformations est celui de l'entité parente.
-
-    <a-scene>
-        <a-box position="0 2 0" rotation="0 45 45" scale="2 4 2">
-            <a-sphere></a-sphere>
-        </a-box>
-    </a-scene>
-
-Le positionnement des entités se fait à partir d'un système de coordonnée basé sur la main droite. Les valeurs positives vont donc à droite (X), en haut (Y) et contre nous (Z).
-
-![Système de coordonnées "main droite", what-when-how.com](../img/326137a8-ab49-11e6-9b76-4e3a65f333d9.jpg)
-
-### Support caméra
-
-Ce système d'héritage requiert ainsi de placer la caméra et les mains dans une sorte de support (camera rig), une entité parente, qui assurera la cohérence dans les déplacements et rotation de ces éléments.
-
 ## Gestion d'assets
 
 A-Frame offre la possibilité de charger différents assets, comme du son, des images, des vidéos, des matériaux et des modèles 3D.
@@ -257,7 +261,7 @@ Afin d'utiliser ce système, les assets sont placés dans une entité `<a-assets
 
 ## Inspecteur visuel
 
-A-Frame offre un outil de visualisation, qui permet de voir sa scène sous d'autres angles et de faciliter ainsi le développement.
+A-Frame offre un outil de visualisation, qui permet de voir sa scène sous d'autres angles et de faciliter ainsi le développement. Il peut être ouvert via la commande `ctrl + alt + i`.
 
 ![inspecteur visuel d'A-Frame, A-Frame](../img/visual-inspector-aframe.png)
 
