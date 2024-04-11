@@ -182,25 +182,25 @@ En ce qui concerne les événements, on peut en émettre avec la fonction `.emit
 
 > Dans la fonction onEnter, on va vérifier si on utilise le raycaster ou le curseur (VR ou 3D) pour ensuite changer la couleur.
 >
-  onEnter: function (evt) {
-    const cursor = evt.detail.cursorEl;
-    if (cursor.getAttribute('raycaster').showLine) {
-      this.savedColor = cursor.getAttribute('raycaster').lineColor;
-      cursor.setAttribute('raycaster', 'lineColor', this.data.color);
-    } else {
-      this.savedColor = cursor.getAttribute('material').color;
-      cursor.setAttribute('material', 'color', this.data.color);
-    }
-  },
+    onEnter: function (evt) {
+        const cursor = evt.detail.cursorEl;
+        if (cursor.getAttribute('raycaster').showLine) {
+        this.savedColor = cursor.getAttribute('raycaster').lineColor;
+        cursor.setAttribute('raycaster', 'lineColor', this.data.color);
+        } else {
+        this.savedColor = cursor.getAttribute('material').color;
+        cursor.setAttribute('material', 'color', this.data.color);
+        }
+    },
 
 > En se basant sur la fonction `onEnter`, écrivez le contenu de `onLeave` pour revenir à la couleur de base.
 >
 > Enfin, pour des raisons de performences, on supprime les `eventListeners` lorsque l'entité est enlevée de la scène.
 >
-  remove: function () {
-    this.el.removeEventListener('mouseenter', this.onEnter);
-    this.el.removeEventListener('mouseleave', this.onLeave);
-  },
+    remove: function () {
+        this.el.removeEventListener('mouseenter', this.onEnter);
+        this.el.removeEventListener('mouseleave', this.onLeave);
+    },
 
 > Vous pouvez tester votre composant en l'attachant au cube présent dans votre scène.
 
