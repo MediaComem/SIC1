@@ -32,7 +32,7 @@ A-Frame adopte une architecture Entity-Component-System. Ce modèle se compose d
 
 Si l'on prend pour exemple un smartphone comme entité, ses composants définiront son apparence (forme, couleur), son comportement (sonner quand on reçoit un appel) et ses fonctionnalités (appel, appareil photo). Le dispositif peut également comprendre un système pour la gestion des comportements liés aux appels.
 
-Plus concrétement, ces éléments sont intégrer comme suit dans A-Frame.
+Plus concrétement, ces éléments sont intégrés comme suit dans A-Frame.
 
 ## Entité
 
