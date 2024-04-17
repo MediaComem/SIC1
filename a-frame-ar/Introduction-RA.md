@@ -15,8 +15,9 @@
 		5. [Projection-based AR](#projection-based-ar)
 		
   - [Problématiques d’utilisabilité VR vs RA](#problematiques)
-    - [A](#A)
-    - [B](#B)
+    - [Cinétose](#cinetose)
+    - [Précision](#precision)
+    - [Interactions](#interactions)
   - [Résumé](#résumé)
   - [Références](#références)
 
@@ -75,9 +76,35 @@ Le principe repose sur la reconnaissance d’un motif, à la façon d’un QR-co
 #### <a name="projection-based-ar">5. Projection-based AR</a>
 Dans cette méthode, l’environnement virtuel est fixe (par exemple, sur une table) et les objets virtuels sont projetés par un projecteur. Les interactions sont rendues possibles par une caméra qui détecter la profondeur et les mouvements.
 
----
+## <a name="problematiques">Problématiques d’utilisabilité VR vs RA</a>
 
-[Chapitre suivant : Exercices pratiques de RA avec A-Frame](pratique-RA.md)
----
+### <a name="cinetose">En VR: la cinétose</a>
+En VR, le principal défi d’utilisabilité est lié à la **cinétose**, soit le «mal de mer» provoqué par une dissonance entre le mouvement de l’utilisateur et celui du monde virtuel avec lequel il interagit. En RA, ce n‘est pas vraiment un problème, puisque la présence dominante de «la réalité» ne permet pas au cerveau de percevoir cette dissonance dans l’interaction avec les objets virtuels: on perçoit principalement le monde réel, qui continue à agir selon les règles physiques auxquelles notre cerveau est habitué. 
+
+### <a name="precision">En RA: la précision de l’ancrage</a>
+En RA, la problématique d’utilisabilité principale est liée à la **précision** et la cohérence temporelle de l’ancrage des objets virtuels. Il faut que les éléments virtuels «suivent» le monde réel avec beaucoup de précision, car lorsqu’il y a un décalage avec la réalité, l’illusion d’appartenance de ces objets à la réalité–l’intérêt principal des interfaces de RA–est annulée, ce qui «brise» constamment le 4ème mur et cause de la frustration. A contrario, la VR peut tolérer certains décalages sur l’ancrage de l’environnement virtuel à la réalité, puisque celle-ci n’est pas visible. 
+
+### <a name="interaction">Interactions naturelles</a>
+L’une des propositions fortes de la RA comme de la VR est l’implémentation d’**interactions naturelles** (direction du regard, mouvement des mains…). Cependant, dans le cas de la RA “hand-held”–soit lorqu’on utilise un périphérique mobile–celles-ci sont rendues quasi impossible, les mains étant utilisées pour tenir la tablette ou le smartphone et pour interagir avec (de façon traditionnelle, en touchant l’écran). Pour cette raison, il est encore difficile d’appliquer la RA à des usages autres que la visualisation de contenus, ce qui rend les interactions très passives et limite son intérêt. 
+
+## <a name="résumé">Résumé:</a>
+En résumé : 
+- En VR : 
+ - On crée un monde virtuel «complet» 
+ - Cela autorise une certaine marge de manœuvre dans la précision des données spatiales
+ - Un délai infime ou un mouvement soudain peut créer de la cinétose…
+ - …Car l’immersion a un impact important sur les perceptions
+ - On est généralement limité dans ses déplacements, en intérieur
+- En RA :
+ - On superpose des éléments virtuels sur «la réalité» (ou un de ses substrats, tel qu’une vue caméra)
+ - Cette superposition exige une grande précision dans les données
+ - Des délais ou des mouvements ne risquent pas de créer de cinétose…
+ - …Car l’immersion est légère, et n’a qu’un impact limité sur les perceptions cognitives
+ - On peut imaginer des usages intérieurs ou extérieurs, voire hybrides
+
 ## <a name="references">références:</a>
 [^1]: Milgram, P.; Kishino, F. A taxonomy of mixed reality visual displays. IEICE Trans. Inf. Syst. 1994,77, 1321–1329.
+
+---
+[Chapitre suivant : Exercices pratiques de RA avec A-Frame](pratique-RA.md)
+---
