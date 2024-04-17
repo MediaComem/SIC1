@@ -102,7 +102,7 @@ En résumé :
  - …Car l’immersion est légère, et n’a qu’un impact limité sur les perceptions cognitives
  - On peut imaginer des usages intérieurs ou extérieurs, voire hybrides
 
-## <a name="references">références:</a>
+## <a name="references">Références:</a>
 [^1]: Milgram, P.; Kishino, F. A taxonomy of mixed reality visual displays. IEICE Trans. Inf. Syst. 1994,77, 1321–1329.
 
 ---
