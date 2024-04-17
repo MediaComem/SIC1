@@ -77,7 +77,7 @@ Dans cette méthode, l’environnement virtuel est fixe (par exemple, sur une ta
 
 ---
 
-[Chapitre suivant : Exercices pratiques de RA avec A-Frame](Pratique-RA.md)
+[Chapitre suivant : Exercices pratiques de RA avec A-Frame](pratique-RA.md)
 ---
 ## <a name="references">références:</a>
 [^1]: Milgram, P.; Kishino, F. A taxonomy of mixed reality visual displays. IEICE Trans. Inf. Syst. 1994,77, 1321–1329.
