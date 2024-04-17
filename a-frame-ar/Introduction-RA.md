@@ -56,8 +56,9 @@ Au sein des interfaces qualifiées de RA, il existe une variété de types, qui 
 
 ### <a name="méthode-tracking">Par méthode de tracking</a>
 Il existe également une catégorisation selon les méthodes utilisées pour faire le suivi de position: 
-
-<img src="../img/AR-types.jpg" alt="test" width="80%"/> 
+|<img src="../img/AR-types.jpg" alt="test" width="80%"/>|
+|:--:| 
+| *1. Marker-based AR; 2. Markerless AR (SLAM); 3. Location-based AR* |
 
 #### <a name="marker-based-ar">1. Marker-based AR</a> 
 Marker-based AR: lorsqu’on a recours à des algorithmes de vision par ordinateur pour faire de la reconnaissance de motif, ce qui permet de transformer des pixels en coordonnées 3D locales. L’exemple le plus connu est celui des QR codes, mais d’autres motifs (y compris invisibles, ou basés sur des modèles 3D) sont possibles. Il est possible avec cette technique d’ancrer des points d’intérêt à un objet appartenant au «monde réel», en plaçant une balise à l’endroit voulu. L’avantage de cette approche est sa précision (~<1mm). Son désavantage principal est la nécessité d’avoir un relai physique dans le monde réel, qui doit également être connu en amont de l’expérience. 
