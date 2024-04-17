@@ -6,7 +6,8 @@ Plusieurs solutions existent, y compris pour le web. Je vais décrire ici une ap
 •	Intégrer un background avec une texture caméra, pour créer la couche «réalité»
 •	Déterminer la position des objets virtuels afin qu’ils interagissent avec la réalité selon la logique souhaitée
 
-<>
+[RA avec A-frame](https://basic-ar-a-frame.glitch.me)
+[code](https://glitch.com/edit/#!/basic-ar-a-frame)
 
 Dans notre cas, nous souhaitons faire de la RA géolocalisée : Les objets virtuels dont nous disposons ont des attributs de pose exprimés en coordonnées géographiques. Afin de pouvoir placer ces éléments par rapport à l’interface utilisateur du périphérique, il faut :
 1.	Récupérer la position géographique du périphérique mobile 
