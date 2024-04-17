@@ -21,12 +21,21 @@
   - [Références](#références)
 
 ## <a name="principe-ra">Principes de la RA</a>
+| <img src="../img/concept-RA.png" alt="test" width="40%"/> | 
+|:--:| 
+| *Une interface de RA est un espace informationnel qui consiste à superposer des objets virtuels à la réalité* |
 
-Conceptuellement, la RA se distingue de la VR par la proportion d’éléments virtuels qu’elle comprend par rapport aux éléments réels: en VR, l’entier du champ de vision est recouvert par des éléments visuels (ciel, background, objets…): ils **occluent** la partie visible de la réalité, même si les éléments réels (le sol, les murs…) restent perceptibles sur par les autres modalités sensorielles que la vision (toucher, odorat). L’ouïe peut ou non être occluse selon qu’on utilise des écouteurs en plus du casque.
+Conceptuellement, la RA se distingue de la VR par la proportion d’éléments virtuels qu’elle comprend par rapport aux éléments réels: en VR, l’entier du champ de vision est recouvert par des éléments visuels (ciel, background, objets…): ils **occluent** la partie visible de la réalité, même si les éléments réels (le sol, les murs…) restent perceptibles sur par les autres modalités sensorielles que la vision (toucher, odorat). L’ouïe peut ou non être occluse selon qu’on utilise des écouteurs en plus du casque. En RA, une grande partie d’objets réels resteront visibles: sur une tablette, on aura généralement une vue caméra en fond; sur des lunettes, on verra la réalité à travers un écran transparent. L’exercice consiste à **augmenter** cette réalité perçue en y ajoutant des objets virtuels. Cela offre des possibilités intéressantes en interaction humain-machine (IHM), puisque cela permet d’imaginer des systèmes où toutes les connaissances relatives à un objet donné sont visibles en parallèle, dans un même **espace informationnel**. 
 
-En RA, on va conserver une grande partie d’éléments réels: sur une tablette, on aura généralement une vue caméra en fond; sur des lunettes, on verra la réalité à travers un écran transparent. L’exercice consiste à **augmenter** cette réalité perçue en y introduisant des éléments virtuels. Cela offre des possibilités intéressantes en interaction humain-machine (IHM), puisque cela permet d’imaginer des systèmes où toutes les connaissances relatives à un objet donné serait visibles dans un même espace informationnel. 
+| <img src="../img/RA-vs-VR.png" alt="test" width="40%"/> | 
+|:--:| 
+| *En VR, le champ visuel est entièrement occulté par les objets virtuels. En RA, la réalité continue d’occuper l’essentiel du champ de vision* |
 
 Pour exploiter au mieux les affordances de la RA, on va essayer de donner à ces éléments une cohérence avec le monde réel qui les entoure, ce qui introduit des difficultés techniques de mise en œuvre, puisqu’il faut alors connaître et mesurer avec précision ce monde réel. 
+
+| <img src="../img/concept-RA-2.png" alt="test" width="40%"/> | 
+|:--:| 
+| *En RA, la notion d’**ancrage** à la réalité et sa précision sont essentiels* |
 
 
 ## <a name="typologie-ra">Typologie</a>
