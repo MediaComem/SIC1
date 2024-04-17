@@ -10,4 +10,7 @@ Support pour le cours SIC1 du master conjoint HES-SO - UNIGE en Développement t
 - [Exercice pratique VR](a-frame-vr/Pratique-VR.md)
 
 ## 3. A-Frame AR
-- [A-Frame AR](A-FrameAR.md)
+- [Introductoion à la RA](a-frame-ar/Introduction-RA.md)
+- [Exercices pratiques RA avec A-Frame et AR.js](a-frame-ar/Pratique-RA.md)
+- [Exercices pratiques LBAR avec A-Frame et LBAR.js](a-frame-ar/Pratique-LBAR.md)
+
