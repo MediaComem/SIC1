@@ -27,7 +27,7 @@
 
 Conceptuellement, la RA se distingue de la VR par la proportion d’éléments virtuels qu’elle comprend par rapport aux éléments réels: en VR, l’entier du champ de vision est recouvert par des éléments visuels (ciel, background, objets…): ils **occluent** la partie visible de la réalité, même si les éléments réels (le sol, les murs…) restent perceptibles sur par les autres modalités sensorielles que la vision (toucher, odorat). L’ouïe peut ou non être occluse selon qu’on utilise des écouteurs en plus du casque. En RA, une grande partie d’objets réels resteront visibles: sur une tablette, on aura généralement une vue caméra en fond; sur des lunettes, on verra la réalité à travers un écran transparent. L’exercice consiste à **augmenter** cette réalité perçue en y ajoutant des objets virtuels. Cela offre des possibilités intéressantes en interaction humain-machine (IHM), puisque cela permet d’imaginer des systèmes où toutes les connaissances relatives à un objet donné sont visibles en parallèle, dans un même **espace informationnel**. 
 
-| <img src="../img/RA-vs-VR.png" alt="test" width="40%"/> | 
+| <img src="../img/RA-vs-RV.png" alt="test" width="40%"/> | 
 |:--:| 
 | *En VR, le champ visuel est entièrement occulté par les objets virtuels. En RA, la réalité continue d’occuper l’essentiel du champ de vision* |
 
