@@ -3,7 +3,7 @@
 ## Table des matières <!-- omit in toc -->
 
 - [Introduction à la RA](#introduction-à-la-ra)
-  - [Principe de la RA](#principe-ra)
+  - [Principes de la RA](#principes-ra)
   - [Typologie](#typologie-ra)
     - [Par degré de «virtualité»](#virtualité)
     - [Par périphérique](#périphérique)
@@ -20,7 +20,7 @@
   - [Résumé](#résumé)
   - [Références](#références)
 
-## <a name="principe-ra">Principes de la RA</a>
+## <a name="principes-ra">Principes de la RA</a>
 | <img src="../img/concept-RA.png" alt="test" width="40%"/> | 
 |:--:| 
 | *Une interface de RA est un espace informationnel qui consiste à superposer des objets virtuels à la réalité* |
@@ -48,10 +48,16 @@ Il débute dans l’environnement réel et finirait sur un (théorique) environn
 | *Le continuum «Réel-Virtuel» (adapté de (Milgram et al., 1994))* |
 
 ### <a name="périphérique">Par périphérique</a>
+| <img src="../img/peripheriques-RA.png" alt="test" width="60%"/> | 
+|:--:| 
+| *La RA peut être déployée sur différents périphériques, du smartphone aux lunettes (pour la modalité visuelle)* |
+
 Au sein des interfaces qualifiées de RA, il existe une variété de types, qui peuvent être catégorisés selon les périphériques utilisés : lunettes, casque (“head-mounted-display”); smartphone, tablette (“hand-held”); tabletop AR (“projection-based”), head-up display (pare-brise de véhicule)… Ces catégories sont dynamiques et évoluent rapidement au gré des innovations. ![image](https://github.com/MediaComem/SIC1/assets/16796103/ac11eb15-2f92-4b87-97be-46d6b24867ae)
 
 ### <a name="méthode-tracking">Par méthode de tracking</a>
-Il existe également une catégorisation selon les méthodes utilisées pour faire le suivi de position. 
+Il existe également une catégorisation selon les méthodes utilisées pour faire le suivi de position: 
+
+<img src="../img/AR-types.jpg" alt="test" width="80%"/> 
 
 #### <a name="marker-based-ar">1. Marker-based AR</a> 
 Marker-based AR: lorsqu’on a recours à des algorithmes de vision par ordinateur pour faire de la reconnaissance de motif, ce qui permet de transformer des pixels en coordonnées 3D locales. L’exemple le plus connu est celui des QR codes, mais d’autres motifs (y compris invisibles, ou basés sur des modèles 3D) sont possibles. Il est possible avec cette technique d’ancrer des points d’intérêt à un objet appartenant au «monde réel», en plaçant une balise à l’endroit voulu. L’avantage de cette approche est sa précision (~<1mm). Son désavantage principal est la nécessité d’avoir un relai physique dans le monde réel, qui doit également être connu en amont de l’expérience. 
