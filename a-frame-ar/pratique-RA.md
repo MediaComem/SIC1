@@ -17,5 +17,3 @@ Dans notre cas, nous souhaitons faire de la RA géolocalisée : Les objets virtu
 <>
 
 Pour cela, nous allons utiliser une librairie que nous avons développée au MEI pour intégrer de la géoinformation dans A-Frame : LBAR.js (pour Location-based Augmented Reality) <https://github.com/MediaComem/LBAR.js/>
-
-![image](https://github.com/MediaComem/SIC1/assets/16796103/dd8389f5-ead1-4b55-afc6-3b7ad17976b1)
