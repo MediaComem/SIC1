@@ -84,18 +84,18 @@ En VR, le principal défi d’utilisabilité est lié à la **cinétose**, soit 
 ### <a name="precision">En RA: la précision de l’ancrage</a>
 En RA, la problématique d’utilisabilité principale est liée à la **précision** et la cohérence temporelle de l’ancrage des objets virtuels. Il faut que les éléments virtuels «suivent» le monde réel avec beaucoup de précision, car lorsqu’il y a un décalage avec la réalité, l’illusion d’appartenance de ces objets à la réalité–l’intérêt principal des interfaces de RA–est annulée, ce qui «brise» constamment le 4ème mur et cause de la frustration. A contrario, la VR peut tolérer certains décalages sur l’ancrage de l’environnement virtuel à la réalité, puisque celle-ci n’est pas visible. 
 
-### <a name="interaction">Interactions naturelles</a>
+### <a name="interactions">Interactions naturelles</a>
 L’une des propositions fortes de la RA comme de la VR est l’implémentation d’**interactions naturelles** (direction du regard, mouvement des mains…). Cependant, dans le cas de la RA “hand-held”–soit lorqu’on utilise un périphérique mobile–celles-ci sont rendues quasi impossible, les mains étant utilisées pour tenir la tablette ou le smartphone et pour interagir avec (de façon traditionnelle, en touchant l’écran). Pour cette raison, il est encore difficile d’appliquer la RA à des usages autres que la visualisation de contenus, ce qui rend les interactions très passives et limite son intérêt. 
 
 ## <a name="résumé">Résumé:</a>
 En résumé : 
-- En VR : 
+1. En VR : 
  - On crée un monde virtuel «complet» 
  - Cela autorise une certaine marge de manœuvre dans la précision des données spatiales
  - Un délai infime ou un mouvement soudain peut créer de la cinétose…
  - …Car l’immersion a un impact important sur les perceptions
  - On est généralement limité dans ses déplacements, en intérieur
-- En RA :
+2. En RA :
  - On superpose des éléments virtuels sur «la réalité» (ou un de ses substrats, tel qu’une vue caméra)
  - Cette superposition exige une grande précision dans les données
  - Des délais ou des mouvements ne risquent pas de créer de cinétose…
