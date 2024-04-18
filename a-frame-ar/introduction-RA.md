@@ -53,7 +53,7 @@ Il débute dans l’environnement réel et finirait sur un (théorique) environn
 |:--:| 
 | *La RA peut être déployée sur différents périphériques, du smartphone aux lunettes (pour la modalité visuelle)* |
 
-Au sein des interfaces qualifiées de RA, il existe une variété de types, qui peuvent être catégorisés selon les périphériques utilisés : lunettes, casque (“head-mounted-display”); smartphone, tablette (“hand-held”); tabletop AR (“projection-based”), head-up display (pare-brise de véhicule)… Ces catégories sont dynamiques et évoluent rapidement au gré des innovations. ![image](https://github.com/MediaComem/SIC1/assets/16796103/ac11eb15-2f92-4b87-97be-46d6b24867ae)
+Au sein des interfaces qualifiées de RA, il existe une variété de types, qui peuvent être catégorisés selon les périphériques utilisés : lunettes, casque (“head-mounted-display”); smartphone, tablette (“hand-held”); tabletop AR (“projection-based”), head-up display (pare-brise de véhicule)… Ces catégories sont dynamiques et évoluent rapidement au gré des innovations.
 
 ### <a name="méthode-tracking">Par méthode de tracking</a>
 Il existe également une catégorisation selon les méthodes utilisées pour faire le suivi de position: 
@@ -74,7 +74,9 @@ lorsqu’on utilise un système de coordonnées géographiques pour attribuer le
 Le principe repose sur la reconnaissance d’un motif, à la façon d’un QR-code, mais avec une possibilité de généraliser (de reconnaître un visage sur la tête de tout individu, par exemple) et de mapper en 3D le contenu virtuel sur l’objet 3D detecté. Cette méthode est utilisée pour réaliser des filtres (Instagram, Snapchat…). 
 
 #### <a name="projection-based-ar">5. Projection-based AR</a>
-Dans cette méthode, l’environnement virtuel est fixe (par exemple, sur une table) et les objets virtuels sont projetés par un projecteur. Les interactions sont rendues possibles par une caméra qui détecter la profondeur et les mouvements.
+Dans cette méthode, l’environnement virtuel est fixe (par exemple, sur une table) et les objets virtuels sont projetés par un projecteur. Les interactions sont rendues possibles par une caméra qui détecte la profondeur et les mouvements. 
+
+[exemple](https://www.youtube.com/watch?time_continue=1&v=bA4uvkAStPc&embeds_referring_euri=https%3A%2F%2Fdigitalpromise.org%2F&source_ve_path=Mjg2NjY&feature=emb_logo)
 
 ## <a name="problematiques">Problématiques d’utilisabilité VR vs RA</a>
 
