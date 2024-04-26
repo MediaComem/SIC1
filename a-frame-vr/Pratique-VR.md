@@ -12,7 +12,7 @@ Si ce n'est donc pas déjà fait, installez [Blender](https://www.blender.org/do
 
 Comme pour Césium, il est possible d'utiliser les données d'OSM pour créer des environnements 3D. En utilisant le plugin, vous allez importez les éléments suivants (dans l'ordre).
 
-- __Terrain :__ utilisez les boutons `select` and `paste` pour sélectionner une zone de votre choix. Sélectionnez une zone de max 0.2 x 0.2 km pour éviter un nettoyage trop chronophage du modèle.
+- __Terrain :__ utilisez les boutons `select` and `paste` pour sélectionner une zone de votre choix. Sélectionnez une zone de max 0.2 x 0.2 km contenant max 8 bâtiments.
 
 - __Image overlay :__ vérifiez que votre terrain précédemment chargé soit sélectionné dans l'option Terrain. Utilisez l'overlay "OSM Mapnik". (changez le _viewport shading_ pour voir les matériaux).
 
@@ -38,10 +38,13 @@ Si vous le souhaitez, ajoutez un ciel à votre scène avec une image 360 de votr
 
 ### Limite des déplacements
 
-Jusqu'à maintenant, rien ne vous empêchait de traverser les murs des bâtiments. Afin d'éviter cela, vous allez ajouter un navmesh, délimitant les zone de déplacement possibles. Utilisez des plans pour dessiner la zone dans laquelle l'utilisateur peut se déplacer. Cela peut être fait de 2 façons différentes :
+Jusqu'à maintenant, rien ne vous empêchait de traverser les murs des bâtiments. Afin d'éviter cela, vous allez ajouter un navmesh, délimitant les zone de déplacement possibles. Utilisez des plans (plane) pour dessiner la zone dans laquelle l'utilisateur peut se déplacer. Cela peut être fait de 2 façons différentes :
 
 - Par addition : placez des plans les uns à côtés des autres pour dessiner les rues, en évitant les bâtiments. Donnez-leur un identifiant commun (class ou data attribute).
 - Par soustraction : utilisez un grand plan qui couvre toute la zone, puis ajoutez des plans aux endroits ou se trouvent les bâtiments. Ces plans seront par la suite soustraits, créant ainsi des "trous" dans le plan principal. Donnez un identifiant communs aux "trous", différent du plan principal.
+
+> [!WARNING]
+> La méthode de soustraction ne fonctionne pas avec le composant de téléportation, que l'on va utiliser par la suite (les murs seront traversables par téléportation).
 
 Ces techniques peuvent bien entendu être combinées. Une fois votre navmesh dessiné, utilisez le composant A-Frame _simple navmesh constraint_ fourni avec le boilerplate (_src > aframe_) sur l'entité portant la camera (#head) du camera rig. Passez-lui les propriétés :
 
@@ -53,7 +56,7 @@ Ces techniques peuvent bien entendu être combinées. Une fois votre navmesh des
 
     disable-in-vr="component: simple-navmesh-constraint;"
 
-Le navmesh n'est en effet pas nécessaire en VR, car les      -->
+Le navmesh n'est en effet pas nécessaire en VR (et ne), les murs nous empêchant instinctivement de les "traverser".   -->
 
 ### Téléportation
 

@@ -64,13 +64,9 @@ Les propriétés multiples sont passées avec la syntaxe suivante :
 
     <a-entity box="width: 2; height: 3"></a-entity>
 
-Le positionnement des entités se fait à partir d'un système de coordonnée basé sur la main droite. Les valeurs positives vont donc à droite (X), en haut (Y) et contre nous (Z).
+Le positionnement des entités se fait à partir d'un système de coordonnée basé sur la main droite. Les valeurs positives vont donc à droite (X), en haut (Y) et contre nous (Z). Les unités sont en mètre.
 
 ![Système de coordonnées "main droite", what-when-how.com](../img/326137a8-ab49-11e6-9b76-4e3a65f333d9.jpg)
-
-> [!NOTE]
-> Les unités sont en mètres.
->
 
 Une entité placée à l'intérieur d'une autre hérite de ses transformations (position, scale, rotation). Dans l'exemple suivant, la sphère aura la même position, la même rotation et la même échelle que la boîte parente.
 
