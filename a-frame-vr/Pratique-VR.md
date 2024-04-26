@@ -46,17 +46,11 @@ Jusqu'à maintenant, rien ne vous empêchait de traverser les murs des bâtiment
 > [!WARNING]
 > La méthode de soustraction ne fonctionne pas avec le composant de téléportation, que l'on va utiliser par la suite (les murs seront traversables par téléportation).
 
-Ces techniques peuvent bien entendu être combinées. Une fois votre navmesh dessiné, utilisez le composant A-Frame _simple navmesh constraint_ fourni avec le boilerplate (_src > aframe_) sur l'entité portant la camera (#head) du camera rig. Passez-lui les propriétés :
+Ces techniques peuvent bien entendu être combinées. Une fois votre navmesh dessiné, rendez vos plans invisibles avec le composant `visible="false"`. Utilisez le composant A-Frame _simple navmesh constraint_ fourni avec le boilerplate (_src > aframe_) sur l'entité portant la camera (#head) du camera rig. Passez-lui les propriétés :
 
 - `navmesh` : sélecteur css du navmesh.
 - `height` : hauteur de votre caméra (1.65 si vous n'y avez pas touché dans l'entité #head).
 - `exlude` : sélecteur css des plans à soustraire du navmesh (trous).
-
-<!-- Ajoutez également le composant suivant à votre entité #head :
-
-    disable-in-vr="component: simple-navmesh-constraint;"
-
-Le navmesh n'est en effet pas nécessaire en VR (et ne), les murs nous empêchant instinctivement de les "traverser".   -->
 
 ### Téléportation
 
