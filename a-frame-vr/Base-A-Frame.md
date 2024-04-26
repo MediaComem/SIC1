@@ -85,6 +85,8 @@ Ce système d'héritage requiert ainsi de placer la caméra et les mains dans un
 > ### :computer: Exercice
 > 
 > Modifiez la position de la box placée précédemment pour qu'elle apparaisse devant vous (au chargement). Ajoutez lui également une couleur de votre choix.
+>
+> Pour vous faire un peu plus la main avec ces entités, créer une bande de guidage PMR (line) qui sillonne entre 3 bâtiments (box).
 > 
 
 ### Enregistrer un composant

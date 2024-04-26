@@ -64,6 +64,14 @@ Placez le blink-controls dans la main gauche du camera rig (et non la "dummy-han
 - `cameraRig` : sélecteur css du camera rig (normalement `#camera-rig` si vous ne l'avez pas changé).
 - `teleportOrigin` : sélecteur css de l'entité à laquelle est liée la caméra (#head).
 - `collisionEntities` : sélecteur css du navmesh.
-- `button` : bouton à presser pour se téléporter. À choix entre trackpad, trigger, grip, menu ou thumbstick
+- `button` : bouton à presser pour se téléporter. À choix entre trackpad, trigger, grip, menu ou thumbstick.
+- `snapTurn` : mettre à false (peu engendrer la cynétose).
+
+# Autres outils
+
+Les outils suivants pourraient potentiellement être intéressants, mais ne fonctionnent pas en l'état.
+
+- [aframe-loader-3dtiles-component](https://github.com/nytimes/aframe-loader-3dtiles-component) : permet de charger des tuiles 3D Cesium et Google. Bug : tuiles chargées mais invisibles.
+- [aframe_blender_exporter](https://github.com/silverslade/aframe_blender_exporter) : pour exporter directement une scène A-Frame depuis Blender. Bug : crash du script Python.
 
 
