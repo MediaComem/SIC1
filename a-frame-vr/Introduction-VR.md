@@ -14,6 +14,12 @@
       - [Simulateurs](#simulateurs)
       - [Déplacements libres](#déplacements-libres)
       - [Autres artifices](#autres-artifices)
+  - [WebXR](#webxr)
+    - [Positionnement dans l'espace](#positionnement-dans-lespace)
+  - [Projets VR et géoinformation](#projets-vr-et-géoinformation)
+    - [SITNVR](#sitnvr)
+    - [Grands Esserts](#grands-esserts)
+    - [Holodeck](#holodeck)
 
 
 ## Technologies VR
@@ -102,6 +108,48 @@ Même si l'espace VR est plus grand que l'espace réel, il existe quelques méth
 - **_Drag and drop_** : Dans l'application [Google Earth VR](https://arvr.google.com/earth/), au lieu de téléporter l'utilisateur vers sa destination, on effectue un "drag" de la destination jusqu'à sa position désirée, ainsi l'utilisateur ne bouge pas, mais c'est la terre qui bouge sous ses pieds ([Chuck Norris facts !](https://www.youtube.com/watch?v=s8uS2maPAZM)).
 
 Bien sûr, les techniques décrites précédemment peuvent être combinées.
+
+## WebXR
+
+WebXR est un groupe de standard et une API conçus pour supporter la VR et l'AR sur le web. Cette technologie utilise WebGL pour ses rendus 3D.
+
+### Positionnement dans l'espace
+
+WebXR utilise un système de coordonnées cartésien en mètres et représente le monde comme un cube de 2m x 2m dont l'origine est au centre. 
+
+![Espace monde, WebXR](../img/defaultspacedimensions.png)
+
+Ce système local est appelé _espace de référence_ et est calculé à partir d'un espace donné (en l'occurence, l'environnement de l'utilisateur).
+
+Si vous voulez allez plus loin, n'hésitez pas à lire [Geometry and reference spaces in WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Geometry) et [WebGL model view projection](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_model_view_projection)
+
+<!-- Pour positionner les différents éléments d'une scène 3D, cette technologie utilise des espaces de références. Ceux-ci mettent en place des systèmes de coordonnées locales calculées à partir d'espaces donnés. Ces espaces de références sont notamment utilisés pour définir l'espace monde (soit l'environnement 3D global), la caméra (tête) et les mains de l'utilisateur, et le rayon utilisé pour les interactions. -->
+
+## Projets VR et géoinformation
+
+Pour vous donner une idée de ce qui a déjà été fait et ce qu'il est possible de faire, voici quelques exemples de projets mélangeant ces 2 projets.
+
+### SITNVR
+
+Prototype de jeu permettant d'importer des données GIS comme des bâtiments et des arbres, et de les placer dans un environnement VR. Réalisé sur Unity pour le [SITN](https://sitn.ne.ch/theme/main?lang=fr&map_x=2550050&map_y=1205000&map_zoom=1&baselayer_ref=blank&tree_groups=gp_points_interets%2Cgp_photos_360%2Cgp_main%2Cgp_base_layers&tree_group_layers_gp_photos_360=&tree_group_layers_gp_main=).
+
+![Screenshot de SITNVR](../img/SMS_SITNVR.png)
+[Démo Youtube](https://www.youtube.com/watch?v=ZIx7gUyjmtI)
+
+
+### Grands Esserts
+
+Visualisation du projet d'urbanisme des Grands Esserts (GE) par [Pixalab](https://pixalab.ch/).
+
+![Screenshot du projet des Grands Esserts](../img/PIXALAB_GRANDS_ESSERTS.png)
+
+[Démo Youtube](https://www.youtube.com/watch?v=mGHDX2Kmpd0&t=8s)
+
+### Holodeck
+
+Projet de recherche de la HSLU qui visait à étudier la pertinence de l'utilisation de la VR et l'AR comme moyen de communication dans l'urbanisme.
+
+![Screenshot du projet holodeck](../img/holodeck.jpg)
 
 ---
 

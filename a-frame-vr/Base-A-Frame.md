@@ -36,7 +36,7 @@ Plus concrétement, ces éléments sont intégrés comme suit dans A-Frame.
 
 ## Entité
 
-La syntaxe de base d'une entité s'apparente à une balise HTML et s'utilise de la même façon. Les entités sont donc placées dans le `body` (ou ailleurs, selon le framework utilisé) :
+La syntaxe de base d'une entité s'apparente à une balise HTML et s'utilise comme telle. Les entités sont donc placées dans le `body` (ou ailleurs, selon le framework utilisé) :
 
     <a-entity></a-entity>
 
@@ -89,7 +89,7 @@ Ce système d'héritage requiert ainsi de placer la caméra et les mains dans un
 
 ### Enregistrer un composant
 
-Comme pour les primitives, il est possible de créer nous-même des composants avec la fonction `registerComponent`.
+Comme pour les primitives, il est possible de créer nous-même des composants. On utilise alors la fonction `registerComponent`.
 
 
         AFRAME.registerComponent('log', {
@@ -106,7 +106,7 @@ Comme pour les primitives, il est possible de créer nous-même des composants a
 
         })
 
-Une fois enregistré le composant peut être utilisé.
+Une fois enregistré le composant peut être utilisé comme suit.
 
     <a-entity log="message: Hello everyone!"></a-entity>
 
@@ -121,7 +121,7 @@ Les [composants](https://aframe.io/docs/1.5.0/core/component.html) offrent égal
 
 > ### :computer: Exercice
 > 
-> Créer un nouveau composant nommé `clickable` dans le dossier `aframe`. Celui-ci permettera d'indiquer visuellement si un élément peut être "cliqué".
+> Créer un nouveau composant nommé `clickable` dans le dossier `src/aframe`. Celui-ci permettera d'indiquer visuellement si un élément peut être "cliqué".
 >
 > Dans `schema`, ajouter une propriété `color` de type `color` et la couleur par défaut de votre choix (différente de celle du cube).
 >
@@ -150,7 +150,7 @@ Pour attacher un composant à une entité ou le mettre à jour, on utilise la m�
     });
 
 > [!IMPORTANT]
-> Pour des raisons de performances, il est préférable de mettre à jour les valeurs de position, rotation, échelle (scale) et visibilité (visible) via three.js directement.
+> Pour des raisons de performances, il est préférable de mettre à jour les valeurs de position, rotation, échelle (scale) et visibilité (visible) via three.js directement. On peut accéder à l'objet 3D sous-jacent via `el.object3D`.
 
     el.object3D.position.x += 5
 
@@ -224,7 +224,7 @@ A-Frame offre la possibilité de charger différents assets, comme du son, des i
 
 Le framework possède un système de gestion d'assets, qui permet de regrouper, pré-charger et mettre en cache les assets, ce qui assure de meilleures performance.
 
-Afin d'utiliser ce système, les assets sont placés dans une entité `<a-assets>`.
+Afin d'utiliser ce système, les assets sont placés dans une entité `<a-assets>` comme dans l'exemple suivant.
 
     <a-scene>
 
@@ -239,7 +239,7 @@ Afin d'utiliser ce système, les assets sont placés dans une entité `<a-assets
         </a-assets>
 
         <!-- Scene -->
-        <a-entity gltf-model="#horse-gltf"></a-entity>
+        <a-gltf-model src="#horse-gltf"></a-gltf-model>
         <a-sound src="#neigh"></a-sound>
         <a-plane src="#advertisement"></a-plane>
         <a-entity geometry="primitive: plane" material="src: #kentucky-derby"></a-entity>
