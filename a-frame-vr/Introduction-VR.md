@@ -44,6 +44,8 @@ Le suivi de position (positional tracking) est possible aujourd'hui avec les 2 t
 - Outside-in (Oculus camera IR, Valve lighthouse…)
 - Inside-out tracking (simultaneous localization and mapping [SLAM](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping))
 
+![Tracking types, Pimax](../img/tracking.webp)
+
 La première est externe au casque et la seconde est intégrée au casque. Bien que plus intéressante pour sa portabilité, la version _inside-out_ est souvent moins précise et il semble difficile qu'elle offre un jour un tracking du corps entier.
 
 Pour aller plus loin sur leurs fonctionnements : [How VR Positional Tracking System Work](https://uploadvr.com/how-vr-tracking-works)
