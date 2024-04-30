@@ -63,20 +63,23 @@ Il existe également une catégorisation selon les méthodes utilisées pour fai
 
 #### <a name="marker-based-ar">1. Marker-based AR</a> 
 Marker-based AR: lorsqu’on a recours à des algorithmes de vision par ordinateur pour faire de la reconnaissance de motif, ce qui permet de transformer des pixels en coordonnées 3D locales. L’exemple le plus connu est celui des QR codes, mais d’autres motifs (y compris invisibles, ou basés sur des modèles 3D) sont possibles. Il est possible avec cette technique d’ancrer des points d’intérêt à un objet appartenant au «monde réel», en plaçant une balise à l’endroit voulu. L’avantage de cette approche est sa précision (~<1mm). Son désavantage principal est la nécessité d’avoir un relai physique dans le monde réel, qui doit également être connu en amont de l’expérience. 
+[exemple marker-based AR](https://www.youtube.com/watch?v=34RCxISaZ5Y&ab_channel=TwinsTalk) 
 
 #### <a name="markerless-ar">2.	Markerless AR</a>
 lorsque l’environnement réel est mappé (=«scan 3D») en posant automatiquement des ancres sur des éléments visuels saillants (angles, plans…), formant ainsi des nuages de points aux caractéristiques uniques. Une fois «mappé», on peut poser des objets virtuels dans cet environnement 3D. Lorsqu’on se déplace, l’algorithme (de type SLAM) tracke les points/ancres et en infère le déplacement du périphérique. L’avantage de cette méthode est sa précision (~<1mm). Son désavantage principal est la nécessité de «mapper» l’environnement réel ciblé, et donc l’impossibilité de concevoir des environnements à distance et en avance. Les points d’intérêt ne peuvent a priori pas être ancrés à un objet du «monde réel», car les nuages de points ne sont pas ancrés à un système de coordonnées globales. De telles combinaisons existent, notamment dans le Visual Positioning System (VPS) développé par Google, basé sur des nuages de points massifs issus des données initialement créées pour le système Google Street Maps.
+[exemple markerless AR](https://www.youtube.com/shorts/A0tKpekdGLo)
 
 #### <a name="location-based-ar">3. Location-based AR</a>
 lorsqu’on utilise un système de coordonnées géographiques pour attribuer leur position à des points d’intérêt. Le périphérique mobile détermine sa position grâce à un capteur GNSS. Une conversion (haversine) est effectuée pour déterminer la distance et l’orientation entre la position du périphérique et celle du point d’intérêt, ce qui permet de l’afficher dans l’interface à la position voulue. Avec cette technique, il est possible d’ancrer des points d’intérêt à des objets appartenant au «monde réel», pour autant que ses coordonnées géographiques soient connues. Le principal avantage est la possibilité de concevoir des environnements à distance, en utilisant par exemple des bases de géodonnées existantes. Les principaux désavantages sont le manque de précision, lié à l’imprécision des capteurs embarqués (GNSS et magnétomètre), l’impossibilité d’avoir recours à la coordonnée Z (l’altitude étant encore moins précise que les longitude et latitude), la limitation à une utilisation en extérieur, dans un environnement dégagé… 
+[exemple location-based AR](https://vimeo.com/user205599695)
 
 #### <a name="superimposition-based-ar">4. Superimposition-based AR</a>
 Le principe repose sur la reconnaissance d’un motif, à la façon d’un QR-code, mais avec une possibilité de généraliser (de reconnaître un visage sur la tête de tout individu, par exemple) et de mapper en 3D le contenu virtuel sur l’objet 3D detecté. Cette méthode est utilisée pour réaliser des filtres (Instagram, Snapchat…). 
+[exemple superimposition-based AR](https://www.youtube.com/watch?v=EU2P_3gveMc&ab_channel=Lumi%C3%A8reClips)
 
 #### <a name="projection-based-ar">5. Projection-based AR</a>
 Dans cette méthode, l’environnement virtuel est fixe (par exemple, sur une table) et les objets virtuels sont projetés par un projecteur. Les interactions sont rendues possibles par une caméra qui détecte la profondeur et les mouvements. 
-
-[exemple](https://www.youtube.com/watch?time_continue=1&v=bA4uvkAStPc&embeds_referring_euri=https%3A%2F%2Fdigitalpromise.org%2F&source_ve_path=Mjg2NjY&feature=emb_logo)
+[exemple projection-based AR](https://www.youtube.com/watch?time_continue=1&v=bA4uvkAStPc&embeds_referring_euri=https%3A%2F%2Fdigitalpromise.org%2F&source_ve_path=Mjg2NjY&feature=emb_logo)
 
 ## <a name="problematiques">Problématiques d’utilisabilité VR vs RA</a>
 
