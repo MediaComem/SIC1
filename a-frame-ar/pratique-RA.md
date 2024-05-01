@@ -15,14 +15,14 @@ Pour accéder facilement à vos projets depuis une tablette, nous allons utilise
 
 ## Marche à suivre:  
 1. Créez un compte [glitch](https://glitch.com/) si vous souhaitez sauvegarder vos modifications. 
-2. Sur votre laptop, allez sur [glitch](https://glitch.com/edit/#!/sic1-ar) ([sur un navigateur supportant webXR](https://caniuse.com/webxr))
+2. Sur votre laptop, allez sur [glitch](https://glitch.com/edit/#!/sic1-ar). 
 3. Cliquez sur «remix» pour créer votre propre copie et éditer le projet. Un nom aléatoire lui sera attribué (vous pouvez le modifier sous «settings»). 
-4. Sur la tablette, allez sur [https://***-nom-de-votre-projet.glitch.me](https://glitch.com/edit/#!/***-nom-de-votre-projet) pour voir le résultat (vous pouvez également visualisez le résultat sur votre laptop, mais la navigation est limité au clavier WASD + souris). 
+4. Sur la tablette, allez sur [https://***-nom-de-votre-projet.glitch.me](https://glitch.com/edit/#!/***-nom-de-votre-projet) [sur un navigateur supportant webXR](https://caniuse.com/webxr) pour voir le résultat (vous pouvez également visualisez le résultat sur votre laptop, mais la navigation est limitée au clavier WASD + souris). 
 5. Entrez en mode «RA» au moyen du bouton en bas à droite. Rafraichissez la page pour voir vos modifications sur le projet. 
 
 [projet RA de base](https://glitch.com/edit/#!/sic1-ar)
 
-## Créer et attribuer un component sur une entité (page `index.html`) 
+## Créer et attribuer un component à entité (page `index.html`) 
 Pour commencer, remarquez que la scene A-frame ne comporte rien de particulier. La balise `<a-scene>` a un attribut `vr-mode-ui="enterAREnabled: true"` pour afficher le bouton entrer en RA, mais celui-ci s’affiche par défaut sur les périphériques capables de RA, il n’est donc pas essentiel. La camera n’a pas de `rig` ni de controllers. Remarquez enfin le component `hide-on-enter-ar` attribué à l’entity `<a-sky>`: cette entité n’est plus visible une fois le mode RA activé.
 
 1. Créez un nouveau fichier nommé `animate-scale.js` dans le directoire `js`. Collez-y le code suivant:
@@ -84,10 +84,10 @@ Notez que cette action n’a pas créé d’entity dans la scène, cela a unique
 6. Ajoutez une entity lumière `<a-light>` à la scène:
 `<a-light type="directional" position="0 0 0" intensity="3.0" target="#directionaltarget"></a-light>`
 
-## Utiliser la fonction hit-test de webXR pour drag & drop des objets virtuels (page `3-drag-simple.html`) 
+## Utiliser la fonction `hit-test` de webXR pour drag & drop des objets virtuels (page `3-drag-simple.html`) 
  1. Sur la page `3-drag-simple.html`, ajoutez les attributs suivants à la balise `<a-scene>`:
     `xr-mode-ui="XRMode: ar" webxr="optionalFeatures:  hit-test;" ar-hit-test="target:#objects;"`
- 2. 
+ 2. Paramétrez l’élévation de la caméra d’a-frame à 1.6 m(actuellement à 0.4 m). 
  3. 
 
 
