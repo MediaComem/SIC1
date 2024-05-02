@@ -1,6 +1,18 @@
 # Exercices pratiques de RA avec A-Frame
 
-## Introduction 
+## Table des matières <!-- omit in toc -->
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Marche à suivre](#marche-a-suivre)
+- [Créer et attribuer un component à une entity](#creer-attribuer)
+- [Importer des gltf animés et ajouter des lumières dans une scène](#importer-gltf)
+- [Utiliser la fonction `hit-test` de webXR pour drag & drop des objets virtuels](#hit-test)
+- [Exemple avancé drag & drop avec `hit-test`](#hit-test-2)
+- [Exemple `hit-test` combiné à une interaction sur un objet virtuel](#interact) 
+
+
+## <a name="introduction">Introduction</a> 
 La RA s’appuie essentiellement sur les mêmes concepts techniques que ceux qui ont été introduit lors du cours précédent sur la VR, à savoir le suivi de position (3/6DoF) d’un corps rigide (un périphérique tel qu’une tablette ou des lunettes), lui-même guidé par les mouvements d’un·e utilisateur·ice. Les mêmes typologies de tracking peuvent exister (outside-in ; inside-out), bien que par nature le mode inside-out est bien plus répandu (c’est-à-dire que le suivi de position est réalisé grâce à des données intégrées au périphérique). La différence fondamentale est l’ajout d’une texture «camera» en fond, avec l’ambition que les objets virtuels s’y ancrent de façon réaliste. 
 
 Pour faire de la RA, il faut : 
@@ -10,10 +22,10 @@ Pour faire de la RA, il faut :
 
 Plusieurs solutions existent, y compris pour le web. Nous allons utiliser ici une approche basée sur l’utilisation du framework A-frame.js, initialement conçu pour la VR, mais qui permet également de faire de la RA. Le framework est basé sur une architecture hiérarchique de type «Entity Component System», normatif dans le monde du jeu vidéo. A-Frame permet de gérer des scènes 3D et les fonctions du mode RA du standard WebXR, qui donne accès aux données de la station inertielle du périphérique ainsi qu’à ses caméras et à la fusion de ces données pour faire du suivi positionnel. Dans les scènes A-frame, des objets sont positionnés selon un système de coordonnées locales, sur une unité métrique (1 = 1 m). La position initiale de la caméra (virtuelle) est l’origine. À mesure que la caméra bouge, elle est trackée et la position de la scène 3D environnante est compensée de manière inversée par rapport au suivi de la caméra: i.e. si le tracking détecte que la caméra s’est déplacée d’1 mètre en avant, A-frame «déplacera» la scène 3D d’1 mètre en arrière. 
 
-## Installation 
+## <a name="installation">Installation</a>
 Pour accéder facilement à vos projets depuis une tablette, nous allons utiliser le service [glitch](glitch.com) qui permet d’héberger des web apps gratuitement. 
 
-## Marche à suivre:  
+## <a name="marche-a-suivre">Marche à suivre</a>  
 1. Créez un compte [glitch](https://glitch.com/) si vous souhaitez sauvegarder vos modifications. 
 2. Sur votre laptop, allez sur [glitch](https://glitch.com/edit/#!/sic1-ar). 
 3. Cliquez sur «remix» pour créer votre propre copie et éditer le projet. Un nom aléatoire lui sera attribué (vous pouvez le modifier sous «settings»). 
@@ -22,7 +34,7 @@ Pour accéder facilement à vos projets depuis une tablette, nous allons utilise
 
 [projet RA de base](https://glitch.com/edit/#!/sic1-ar)
 
-## Créer et attribuer un component à entité (page `index.html`) 
+## <a name="creer-attribuer">Créer et attribuer un component à une entity (page `index.html`)</a<
 Pour commencer, remarquez que la scene A-frame ne comporte rien de particulier. La balise `<a-scene>` a un attribut `vr-mode-ui="enterAREnabled: true"` pour afficher le bouton entrer en RA, mais celui-ci s’affiche par défaut sur les périphériques capables de RA, il n’est donc pas essentiel. La camera n’a pas de `rig` ni de controllers. Remarquez enfin le component `hide-on-enter-ar` attribué à l’entity `<a-sky>`: cette entité n’est plus visible une fois le mode RA activé.
 
 1. Créez un nouveau fichier nommé `animate-scale.js` dans le directoire `js`. Collez-y le code suivant:
@@ -66,7 +78,7 @@ AFRAME.registerComponent('animate-scale', {
     animate-scale__123581321="factor:.3; axe:z"
    ```
 
-## Importer des gltf animés et ajouter des lumières dans une scène (page `1-assets.html`) 
+## <a name="importer-gltf">Importer des gltf animés et ajouter des lumières dans une scène (page `1-assets.html`)</a>
 1. Sur la page `1-assets.html`, en tant qu’enfant de l’entity qui porte l’`id="objet"`, ajoutez une entity qui contient un `gltf` statique:
 `<a-entity position="0 0 -1" shadow gltf-model="url(https://cdn.glitch.global/36ffed16-a93a-4d6b-a6cd-669447f2a1e9/Triceratops-100k-2048_std_draco.glb?v=1713795783826)"></a-entity>`
 2. Deuxièmement, importez la libairie `a-frame-extras`, qui permet notamment de jouer les animations contenues dans des `gltf`:
@@ -84,7 +96,7 @@ Notez que cette action n’a pas créé d’entity dans la scène, cela a unique
 6. Ajoutez une entity lumière `<a-light>` à la scène:
 `<a-light type="directional" position="0 0 0" intensity="3.0" target="#directionaltarget"></a-light>`
 
-## Utiliser la fonction `hit-test` de webXR pour drag & drop des objets virtuels (page `3-drag-simple.html`) 
+## <a name="hit-test">Utiliser la fonction `hit-test` de webXR pour drag & drop des objets virtuels (page `3-drag-simple.html`)</a>
  1. Sur la page `3-drag-simple.html`, ajoutez les attributs suivants à la balise `<a-scene>`:
     `xr-mode-ui="XRMode: ar" webxr="optionalFeatures: hit-test;" ar-hit-test="target:#object;"`
     Ceci permet d’utiliser la fonctionnalité de "hit-test” de l’API WebXR. On précise l’id de la cible que l’on va tester (dont on va tester la collision avec le pointeur, en l‘occurence le doigt sur l’écran tactile, ou la souris). 
@@ -95,9 +107,9 @@ Notez que cette action n’a pas créé d’entity dans la scène, cela a unique
  6. Extra, si vous êtes rapides. Ajoutez une entity de type "line" à la scène:
     `<a-entity line="start: 0 0 0; end: 0 0 -2; color: red" line__2="start: 0 0 0; end: 0 0 2; color: green"></a-entity>`
 
-## Pour un exemple plus avancé de drag & drop avec le `hit-test` de webXR, avec des objets virtuels et leur ombre projetée (page `3-drag.html`)
+## <a name="hit-test-2">Pour un exemple plus avancé de drag & drop avec le `hit-test` de webXR, avec des objets virtuels et leur ombre projetée (page `3-drag.html`)</a>
 
-## Exemple `hit-test` combiné à une interaction sur un objet virtuel (page `4-interact.html`) 
+## <a name="interact">Exemple `hit-test` combiné à une interaction sur un objet virtuel (page `4-interact.html`)</a> 
 1. Sur la page `4-interact.html`, créez une entity avec l’`id="camera-rig"` et positionnée à `0 0 0`: 
        ```
        <a-entity
@@ -151,3 +163,7 @@ Notez que cette action n’a pas créé d’entity dans la scène, cela a unique
     ```
 6. Testez sur la tablette en mode RA. La porte devrait s’ouvrir si on s’en approche, ou alors si on clique lorsque le `hit-test` est `true` (=lorsque le curseur est sur la porte).
 7. Vous pouvez modifier les paramètres du component `animation` pour varier vitesse, angle d’ouverture, etc.
+
+---
+[Chapitre suivant : Exercices pratiques de RA avec des géodonnées avec A-Frame](pratique-RA-geo.md)
+---
