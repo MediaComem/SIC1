@@ -36,9 +36,43 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
 5. Remplacez le style de la carte (`map-style=…`) par `#zip-style`. Modifiez les coordonnées (`center=…`), le niveau de zoom, la taille de la carte, etc. 
 
 ## <a name="exemple-2">Ajouter la position GPS du périphérique mobile sur la carte (´map-gps.html´)</a> 
-1. 
-
-
+1. Sur la page ´map-gps.html´, downgradez la version d’a-frame vers la version 0.8.2:
+`<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>`
+2. Dans la `<a-scene>`, entre les balises `<a-assets></a-assets>`, importez l’asset (le style cartographique) "tron-style":
+`<a-asset-item id="tron-style" src="https://www.nextzen.org/carto/tron-style/6/tron-style.zip" />`
+3. Dans la scene, sous les assets, ajoutez l’`<a-entity>` qui suit:
+   ```
+   <a-entity 
+        position="0 0 -2"
+        geometry="primitive: plane; width: 7; height: 5;"
+        tangram-map="apiKey: UJcQwnnfQnWcPtKe2aYaEw; style: #tron-style;
+        ">
+      </a-entity>
+   ```
+4. à la fin de la page, entre la balise fermante `</body>` et `</html>`, insérer le javascript qui suit:
+   ```
+    <script>
+      var mapEl = document.querySelector('[tangram-map]');
+      var markerEl = document.querySelector('#marker');
+      var setProperty = window.AFRAME.utils.entity.setComponentProperty;
+      mapEl.addEventListener('tangram-map-loaded', function() {
+        navigator.geolocation.watchPosition(function(position) {
+          var long = position.coords.longitude;
+          var lat = position.coords.latitude;
+          setProperty(mapEl, 'tangram-map.center', long + ', ' + lat);
+          setProperty(mapEl, 'tangram-map.zoom', '16');
+          setProperty(markerEl, 'position', mapEl.components["tangram-map"].project(long, lat));
+          setProperty(markerEl, 'visible', true);
+        }, function(error) {
+          console.error(error);
+        });
+      });
+    </script>
+   ```
+Notez la méthode `watchPosition()` qui permet d’obtenir (moyennant l’autorisation de l’utilisateur dans le navigateur) les coordonnées géographiques du périphérique. 
+5. En tant qu’enfant de l’entity plane qui contient le component `tangram-map`, ajouter une primitive de type sphère avec l’`id="marker"`:
+`<a-sphere id="marker" color="#EF2D5E" position="0 0 0" visible="false" radius="0.1"></a-sphere>`
+6. Tester dans le navigateur de la tablette, si possible en extérieur pour obtenir une géolocation plus précise. 
 
 ## <a name="exemple-3">Exemple 3</a> 
 ## <a name="exemple-4">Exemple 4</a> 
