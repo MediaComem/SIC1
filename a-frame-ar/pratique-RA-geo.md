@@ -36,11 +36,12 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
 5. Remplacez le style de la carte (`map-style=…`) par `#zip-style`. Modifiez les coordonnées (`center=…`), le niveau de zoom, la taille de la carte, etc. 
 
 ## <a name="exemple-2">Ajouter la position GPS du périphérique mobile sur la carte (´map-gps.html´)</a> 
-1. Sur la page ´map-gps.html´, downgradez la version d’a-frame vers la version 0.8.2:
+1. Sur la page ´map-gps.html´, downgradez* la version d’a-frame vers la version 0.8.2:
 `<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>`
-2. Dans la `<a-scene>`, entre les balises `<a-assets></a-assets>`, importez l’asset (le style cartographique) "tron-style":
+* Notez que si vous utilisez cette dépendance dans votre projet, les fonctionnalités apparues dans les version ultérieures d’a-frame pourraient ne pas être disponibles. 
+3. Dans la `<a-scene>`, entre les balises `<a-assets></a-assets>`, importez l’asset (le style cartographique) "tron-style":
 `<a-asset-item id="tron-style" src="https://www.nextzen.org/carto/tron-style/6/tron-style.zip" />`
-3. Dans la scene, sous les assets, ajoutez l’`<a-entity>` qui suit:
+4. Dans la scene, sous les assets, ajoutez l’`<a-entity>` qui suit:
    ```
    <a-entity 
         position="0 0 -2"
@@ -49,7 +50,7 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
         ">
       </a-entity>
    ```
-4. à la fin de la page, entre la balise fermante `</body>` et `</html>`, insérer le javascript qui suit:
+5. à la fin de la page, entre la balise fermante `</body>` et `</html>`, insérer le javascript qui suit:
    ```
     <script>
       var mapEl = document.querySelector('[tangram-map]');
