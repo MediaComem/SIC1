@@ -13,7 +13,7 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
 
 ## <a name="exemple-1">Importer une tile 2D avec Mapzen Tangram</a> 
 
-1. Importer le [component "Mapzen Tangram"](https://github.com/mattrei/aframe-tangram-component?tab=readme-ov-file) dans `head`
+1. Ouvrez la page `index.html`. Importer le [component "Mapzen Tangram"](https://github.com/mattrei/aframe-tangram-component?tab=readme-ov-file) dans `head`:
    `<script src="https://unpkg.com/aframe-tangram-component/dist/aframe-tangram-component.min.js"></script>`
 2. Importez les assets suivants à l’intérieur d’un objet `<a-assets></a-assets>`, au début de votre `<a-scene>`. Il s’agit de deux styles de carte
    ```
@@ -73,9 +73,41 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
 Notez la méthode `watchPosition()` qui permet d’obtenir (moyennant l’autorisation de l’utilisateur dans le navigateur) les coordonnées géographiques du périphérique. 
 5. En tant qu’enfant de l’entity plane qui contient le component `tangram-map`, ajouter une primitive de type sphère avec l’`id="marker"`:
 `<a-sphere id="marker" color="#EF2D5E" position="0 0 0" visible="false" radius="0.1"></a-sphere>`
+
 6. Tester dans le navigateur de la tablette, si possible en extérieur pour obtenir une géolocation plus précise. 
 
-## <a name="exemple-3">Exemple 3</a> 
+## <a name="exemple-3">Importing geojson in a-frame</a> 
+1. Ouvrez la page `geojson.html`. Importez les librairies [a-frame geojson component](https://github.com/mattrei/aframe-geojson-component) et `d3.js` dans la `<head>`: 
+   ```
+   <script src="https://unpkg.com/aframe-geojson-component/dist/aframe-geojson-component.min.js"></script>
+   <script src="https://d3js.org/d3.v5.js"></script>
+   ```
+2. Ajoutez les attributs suivants dans la balise ouvrante `<a-scene>`:
+`camera-transform-controls cursor="rayOrigin: mouse"`
+cela permet en cliquant la rotation de la scene autour d’un axe centré sur un objet.
+3. Importez au début de la scène, dans des balises `<a-assets>…</a-assets>`, les deux fichiers geojson qui suivent:
+   - `<a-asset-item id="world-geojson" src="assets/world-50m.v1.json" />`pour les frontières nationales
+   - `<a-asset-item id="lakes" src="https://cdn.glitch.global/77697557-e2e3-48f6-b7c1-14eb74f520c0/ne_50m_lakes.geojson?v=1713815282536" />` pour les lacs
+4. Dans l’entity qui se trouve dans la scène, ajoutez l’entity primitive de type sphère (en tant qu’enfant) suivante:
+`       <a-entity 
+        geometry="primitive: sphere; radius: 4;"
+        material="color: #000;"
+        geojson="src: #world-geojson; topologyObject: countries;"
+        />    
+`
+le component geojson permet d’appliquer le fichier `.geojson` souhaité en tant que texture de la sphère.
+5. Sous cette entity, ajoutez une deuxième entity avec les lacs:
+   ```
+        <a-entity 
+        geometry="primitive: sphere; radius: 4;"
+        material="color: #0096C7;"
+        geojson="src: #lakes; topologyObject: lakes;"
+        />
+   ```
+6. Sur l’entity parente, ajoutez l’attribut suivant pour animer la sphère et la faire tourner (1 tour complet en 10 secondes):
+`animation="property: rotation; to: 360 360 360; loop: true; dur: 100000"`
+
+
 ## <a name="exemple-4">Exemple 4</a> 
 ## <a name="exemple-5">Exemple 5</a> 
 
