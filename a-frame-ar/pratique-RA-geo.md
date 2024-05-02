@@ -5,9 +5,10 @@
 - [Introduction](#introduction)
 - [Importer une tile 2D avec Mapzen Tangram](#exemple-1)
 - [Ajouter la position GPS du périphérique mobile sur la carte](#exemple-2)
-- 
+- [Importer des fichiers `.geojson` dans a-frame](#exemple-3)
+- [Importer des tiles 3D avec `Cesium.js`](#exemple-4)
 
-- 
+  
 ## <a name="introduction">Introduction</a> 
 L’utilisation de géodonnées en RA peut se faire de différentes façons, avec toutefois beaucoup moins de souplesse et d’options que dans le cas de web "non-spatial". Dans a-frame, chaque objet présent dans la scène devient un objet 3D avec ce que cela comprend de coût computationnel à calculer. Il est possible d’importer des cartes, mais pour pouvoir être restituée dans un espace 3D, la tuile invoquée deviendra une image statique qui est attribuée en tant que texture à une primitive de type "plane". Il est également possible d’importer des tuiles 3D via CesiumIon, sans avoir toutes les options que ce framework offre traditionnellement. Finalement nous verrons un exemple de RA géolocalisée dont le but est de faire apparaître des objets virtuels auxquels sont attribués des coordonnées géographiques. Pour tester, il faudra donc sortir pour avoir accès aux données GNSS et aller à l’endroit paramétré. Pour cela, nous allons utiliser une librairie que nous avons développée au MEI pour intégrer de la géoinformation et convertir des positions globales en positions locales dans A-Frame: [LBAR.js](<https://github.com/MediaComem/LBAR.js/>) (Location-Based Augmented Reality). 
 
@@ -76,7 +77,7 @@ Notez la méthode `watchPosition()` qui permet d’obtenir (moyennant l’autori
 
 6. Tester dans le navigateur de la tablette, si possible en extérieur pour obtenir une géolocation plus précise. 
 
-## <a name="exemple-3">Importing geojson in a-frame</a> 
+## <a name="exemple-3">Importer des fichiers `.geojson` dans a-frame</a> 
 1. Ouvrez la page `geojson.html`. Importez les librairies [a-frame geojson component](https://github.com/mattrei/aframe-geojson-component) et `d3.js` dans la `<head>`: 
    ```
    <script src="https://unpkg.com/aframe-geojson-component/dist/aframe-geojson-component.min.js"></script>
@@ -108,7 +109,9 @@ le component geojson permet d’appliquer le fichier `.geojson` souhaité en tan
 `animation="property: rotation; to: 360 360 360; loop: true; dur: 100000"`
 
 
-## <a name="exemple-4">Exemple 4</a> 
+## <a name="exemple-4">Importer des tiles 3D avec `Cesium.js`</a> 
+1. 
+
 ## <a name="exemple-5">Exemple 5</a> 
 
 
