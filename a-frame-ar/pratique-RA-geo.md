@@ -4,14 +4,16 @@
 
 - [Introduction](#introduction)
 - [Importer une tile 2D avec Mapzen Tangram](#exemple-1)
+- [Ajouter la position GPS du périphérique mobile sur la carte](#exemple-2)
+- 
 
 - 
 ## <a name="introduction">Introduction</a> 
 L’utilisation de géodonnées en RA peut se faire de différentes façons, avec toutefois beaucoup moins de souplesse et d’options que dans le cas de web "non-spatial". Dans a-frame, chaque objet présent dans la scène devient un objet 3D avec ce que cela comprend de coût computationnel à calculer. Il est possible d’importer des cartes, mais pour pouvoir être restituée dans un espace 3D, la tuile invoquée deviendra une image statique qui est attribuée en tant que texture à une primitive de type "plane". Il est également possible d’importer des tuiles 3D via CesiumIon, sans avoir toutes les options que ce framework offre traditionnellement. Finalement nous verrons un exemple de RA géolocalisée dont le but est de faire apparaître des objets virtuels auxquels sont attribués des coordonnées géographiques. Pour tester, il faudra donc sortir pour avoir accès aux données GNSS et aller à l’endroit paramétré. Pour cela, nous allons utiliser une librairie que nous avons développée au MEI pour intégrer de la géoinformation et convertir des positions globales en positions locales dans A-Frame: [LBAR.js](<https://github.com/MediaComem/LBAR.js/>) (Location-Based Augmented Reality). 
 
 ## <a name="exemple-1">Importer une tile 2D avec Mapzen Tangram</a> 
-[réf](https://github.com/mattrei/aframe-tangram-component?tab=readme-ov-file)
-1. Importer le component "Mapzen Tangram" dans `head`
+
+1. Importer le [component "Mapzen Tangram"](https://github.com/mattrei/aframe-tangram-component?tab=readme-ov-file) dans `head`
    `<script src="https://unpkg.com/aframe-tangram-component/dist/aframe-tangram-component.min.js"></script>`
 2. Importez les assets suivants à l’intérieur d’un objet `<a-assets></a-assets>`, au début de votre `<a-scene>`. Il s’agit de deux styles de carte
    ```
@@ -33,7 +35,11 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
 4. Ouvrez la page sur la tablette pour tester en mode RA. 
 5. Remplacez le style de la carte (`map-style=…`) par `#zip-style`. Modifiez les coordonnées (`center=…`), le niveau de zoom, la taille de la carte, etc. 
 
-## <a name="exemple-2">Exemple 2</a> 
+## <a name="exemple-2">Ajouter la position GPS du périphérique mobile sur la carte (´map-gps.html´)</a> 
+1. 
+
+
+
 ## <a name="exemple-3">Exemple 3</a> 
 ## <a name="exemple-4">Exemple 4</a> 
 ## <a name="exemple-5">Exemple 5</a> 
