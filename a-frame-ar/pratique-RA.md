@@ -13,17 +13,21 @@
 
 
 ## <a name="introduction">Introduction</a> 
-La RA s’appuie essentiellement sur les mêmes concepts techniques que ceux qui ont été introduit lors du cours précédent sur la VR, à savoir le suivi de position (3/6DoF) d’un corps rigide (un périphérique tel qu’une tablette ou des lunettes), lui-même guidé par les mouvements d’un·e utilisateur·ice. Les mêmes typologies de tracking peuvent exister (outside-in ; inside-out), bien que par nature le mode inside-out est bien plus répandu (c’est-à-dire que le suivi de position est réalisé grâce à des données intégrées au périphérique). La différence fondamentale est l’ajout d’une texture «camera» en fond, avec l’ambition que les objets virtuels s’y ancrent de façon réaliste. 
+La RA s’appuie essentiellement sur les mêmes concepts techniques que ceux qui ont été introduit lors du cours précédent sur la VR, à savoir le suivi de position (3/6DoF) d’un corps rigide (un périphérique tel qu’une tablette ou des lunettes), lui-même guidé par les mouvements d’un·e utilisateur·ice. Les mêmes typologies de tracking peuvent exister (outside-in ; inside-out), bien que par nature le mode inside-out est bien plus répandu (c’est-à-dire que le suivi de position est réalisé grâce à des données intégrées au périphérique). La différence fondamentale est l’ajout d’une texture «camera» en fond, avec l’ambition que les objets virtuels s’y ancrent de façon réaliste. Pour faire tout cela sur un navigateur web, l’API WebXR des groupes «Immersive Web Community» et «Immersive Web Working Group» du W3C repose sur WebGL et permet notamment de gérer l’accès à des données du périphérique utilisé. 
 
 Pour faire de la RA, il faut : 
 •	Intégrer un background avec une texture caméra, pour créer la couche «réalité»
 •	*n* objets virtuels qui s’ancrent, c-à-d qui interagissent avec cette couche de «réalité» 
 •	Un système de suivi positionnel pour compenser et déterminer la position des objets virtuels, afin qu’ils semblent s’ancrer dans la réalité. 
 
-Plusieurs solutions existent, y compris pour le web. Nous allons utiliser ici une approche basée sur l’utilisation du framework A-frame.js, initialement conçu pour la VR, mais qui permet également de faire de la RA. Le framework est basé sur une architecture hiérarchique de type «Entity Component System», normatif dans le monde du jeu vidéo. A-Frame permet de gérer des scènes 3D et les fonctions du mode RA du standard WebXR, qui donne accès aux données de la station inertielle du périphérique ainsi qu’à ses caméras et à la fusion de ces données pour faire du suivi positionnel. Dans les scènes A-frame, des objets sont positionnés selon un système de coordonnées locales, sur une unité métrique (1 = 1 m). La position initiale de la caméra (virtuelle) est l’origine. À mesure que la caméra bouge, elle est trackée et la position de la scène 3D environnante est compensée de manière inversée par rapport au suivi de la caméra: i.e. si le tracking détecte que la caméra s’est déplacée d’1 mètre en avant, A-frame «déplacera» la scène 3D d’1 mètre en arrière. 
+Plusieurs solutions existent, y compris pour le web. Nous allons utiliser ici le framework a-frame.js avec le component [`aframe-ar.js`](https://github.com/chenzlabs/aframe-ar), qui permet l’accès aux fonctionnalités de l’API WebXR depuis une <a-scene>. A-Frame permet de gérer des scènes 3D et aframe-ar.js un mode RA basé sur l’utilisation des données de la station inertielle du périphérique ainsi qu’à ses caméras et à la fusion de ces données pour faire du suivi positionnel de qualité. Dans les scènes A-frame, des objets sont positionnés selon un système de coordonnées locales, sur une unité métrique (1 = 1 m). La position initiale de la caméra (virtuelle) est l’origine. À mesure que la caméra bouge, elle est trackée et la position de la scène 3D environnante est compensée de manière inversée par rapport au suivi de la caméra: i.e. si le tracking détecte que la caméra s’est déplacée d’1 mètre en avant, A-frame «déplacera» la scène 3D d’1 mètre en arrière. 
 
 ## <a name="installation">Installation</a>
 Pour accéder facilement à vos projets depuis une tablette, nous allons utiliser le service [glitch](glitch.com) qui permet d’héberger des web apps gratuitement. 
+Pour faire de la RA dans a-frame, il faut importer la librairie a-frame: 
+`<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>`
+ainsi que le component [`aframe-ar.js`](https://github.com/chenzlabs/aframe-ar):
+`<script src="https://ghcdn.rawgit.org/chenzlabs/aframe-ar/8a7ee3b/dist/aframe-ar.min.js"></script>`
 
 ## <a name="marche-a-suivre">Marche à suivre</a>  
 1. Créez un compte [glitch](https://glitch.com/) si vous souhaitez sauvegarder vos modifications. 
