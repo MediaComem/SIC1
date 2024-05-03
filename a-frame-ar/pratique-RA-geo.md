@@ -110,7 +110,25 @@ le component geojson permet d’appliquer le fichier `.geojson` souhaité en tan
 
 
 ## <a name="exemple-4">Importer des tiles 3D avec `Cesium.js`</a> 
-1. 
+1. Ouvrez la page `globe.html`. Downgradez la version d’a-frame à la version 0.7.1.
+2. Importez dans la `head` la librairie [`<a-terrain>`](https://github.com/anselm/aterrain), [aframe-orbit-controls-component.js](https://github.com/tizzle/aframe-orbit-controls-component), Cesium.js, et [aframe-environment-component](https://www.npmjs.com/package/aframe-environment-component):
+   ```
+   <script src="js/aframe-orbit-controls-component.js"></script>
+    <script src="js/Cesium.js"></script>
+    <script src="js/aframe-aterrain-component.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.0.0/dist/aframe-environment-component.min.js"></script>
+   ```
+3. Dans la scène, créez une entity avec l’`id="world"` et le component `a-terrain`:
+`<a-entity id="world" position="0 0 0" visible="true" a-terrain="radius:1000; observer:camera">`
+4. Créez une entity "enfant" de cette entity avec le component `a-location` et les coordonnées géographiques de votre choix:
+   `<a-entity a-location="lat:46.523261642620966; lon:6.61036944949248; radius:1010;"></a-entity>`
+5. Créez une entity "enfant" de cette entity avec l’attribut suivant (pour se positionner à la perpendiculaire de son parent):
+   `<a-entity rotation="-90 0 0"></a-entity>`
+6. Créez une entity "enfant" de type `gltf-model`de cette entity avec une `scale` importante et une `src=…` qui pointe vers un assets de type `gltf`:
+ `<a-gltf-model scale="100 100 100" src="https://cdn.glitch.global/77697557-e2e3-48f6-b7c1-14eb74f520c0/drapeau-jaune.glb?v=1713802540021"><a-gltf-model>`
+7. Bonus: créez une entity de type `<a-animation>` comme "enfant" de l’entity `<a-gltf-model>` pour faire tourner le marqueur sur lui-même:
+   `<a-animation attribute="rotation" dur="10000" from="0 0 0" to="0 360 0" easing="linear" repeat="indefinite"></a-animation>`
+8. Testez différentes valeurs pour les attributs de l’entity caméra pour trouvez une interaction confortable (scroll/zoom, etc.).  
 
 ## <a name="exemple-5">Exemple 5</a> 
 
