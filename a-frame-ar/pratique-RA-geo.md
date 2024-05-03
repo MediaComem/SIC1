@@ -7,7 +7,8 @@
 - [Ajouter la position GPS du périphérique mobile sur la carte](#exemple-2)
 - [Importer des fichiers `.geojson` dans a-frame](#exemple-3)
 - [Importer des tiles 3D avec `Cesium.js`](#exemple-4)
-
+- [Importer des tiles 3D avec `Cesium.js` II](#exemple-5)
+- [Pour aller plus loin…](#exemple-6)
   
 ## <a name="introduction">Introduction</a> 
 L’utilisation de géodonnées en RA peut se faire de différentes façons, avec toutefois beaucoup moins de souplesse et d’options que dans le cas de web "non-spatial". Dans a-frame, chaque objet présent dans la scène devient un objet 3D avec ce que cela comprend de coût computationnel à calculer. Il est possible d’importer des cartes, mais pour pouvoir être restituée dans un espace 3D, la tuile invoquée deviendra une image statique qui est attribuée en tant que texture à une primitive de type "plane". Il est également possible d’importer des tuiles 3D via CesiumIon, sans avoir toutes les options que ce framework offre traditionnellement. Finalement nous verrons un exemple de RA géolocalisée dont le but est de faire apparaître des objets virtuels auxquels sont attribués des coordonnées géographiques. Pour tester, il faudra donc sortir pour avoir accès aux données GNSS et aller à l’endroit paramétré. Pour cela, nous allons utiliser une librairie que nous avons développée au MEI pour intégrer de la géoinformation et convertir des positions globales en positions locales dans A-Frame: [LBAR.js](<https://github.com/MediaComem/LBAR.js/>) (Location-Based Augmented Reality). 
@@ -130,14 +131,40 @@ le component geojson permet d’appliquer le fichier `.geojson` souhaité en tan
    `<a-animation attribute="rotation" dur="10000" from="0 0 0" to="0 360 0" easing="linear" repeat="indefinite"></a-animation>`
 8. Testez différentes valeurs pour les attributs de l’entity caméra pour trouvez une interaction confortable (scroll/zoom, etc.).  
 
-## <a name="exemple-5">Exemple 5</a> 
+## <a name="exemple-5">Importer des tiles 3D avec `Cesium.js` II</a> 
+1. Ouvrez la page `cesium-tile.html`. Downgradez la version d’a-frame à la version 0.7.1.
+2. Dans la `<head>`, importez les librairies suivantes:
+   ```
+   <script src="js/Cesium.js"></script>
+   <script src="js/aframe-aterrain-component.js"></script>
+   <script src="https://fernandojsg.github.io/aframe-camera-transform-controls-component/dist/aframe-camera-transform-controls-component.min.js"> </script>
 
+   ```
+ 3. Dans la scène, créez une entity avec le component `<a-terrain>`. Donnez-lui les attributs suivants: 
+  ```
+  <a-entity
+  a-terrain="
+    fovpad:4;
+  	latitude:46.523261642620966;
+  	longitude:6.61036944949248;
+  	stretch:2;
+  	lod:13;
+  	elevation:200;
+  	radius:10000;
+	">
+	</a-entity>
+  ```
+4. Modifiez les coordonnées, le lod (level of detail), etc. Attention: en fonction de l’endroit que vous sollicitez, les levels of details élevé ne sont peut-être pas disponible. Attention également à avoir une élevation supérieure à la zone sollicitée, sans quoi la tile cesium n’est pas visible.
+5. Dans l’inspecteur d’a-frame (ctrl+alt+i), repositionnez la camera avec les handles de position (flèches verte, rouge, bleue) et reportez les valeurs dans votre entity camera.
+   
+## <a name="exemple-6">Pour aller plus loin…</a> 
+1. Il existe plusieurs autres librairies pour traiter/importer/gérer des géodonnées dans a-frame, comme par exemple:
+   - [vrmap](https://github.com/KaiRo-at/vrmap)
+   - [aframe-map (mapbox)](https://github.com/jesstelford/aframe-map)
+   - [aframe-openlayers](https://github.com/lcalisto/aframe-openlayers-component)
+2. Ou, hors a-frame:
+   - [ESRI/arcgis](https://medium.com/@seremetonurhan/display-real-time-weather-information-on-your-web-scene-maps-with-arcgis-javascript-sdk-32cc796c667c)
 
-
-Dans notre cas, nous souhaitons faire de la RA géolocalisée : Les objets virtuels dont nous disposons ont des attributs de pose exprimés en coordonnées géographiques. Afin de pouvoir placer ces éléments par rapport à l’interface utilisateur du périphérique, il faut :
-1.	Récupérer la position géographique du périphérique mobile 
-2.	Récupérer l’orientation (absolue) de la caméra du périphérique
-3.	Récupérer les autres mesures de pose 6DoF de la caméra (pitch, roll)
-4.	Convertir les coordonnées géographiques des objets virtuels en coordonnées locales, par rapport à l’origine (la caméra virtuelle), d’après ses données de pose 
-
-<>
+---
+[Chapitre suivant : LBAR.js](LBAR-js.md)
+---
