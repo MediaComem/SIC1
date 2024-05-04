@@ -4,7 +4,7 @@
 
 - [Introduction](#introduction)
 - [Installation](#installation)
-- [Positionner un objet virtuel avec des coordonnées géographiques avec [`LBAR.js`](https://github.com/MediaComem/LBAR.js/)](#exemple-1)
+- [Positionner un objet virtuel avec des coordonnées géographiques avec `LBAR.js`](#exemple-1)
   
 ## <a name="introduction">Introduction</a> 
 
