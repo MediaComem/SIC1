@@ -10,6 +10,7 @@
 - [Utiliser la fonction `hit-test` de webXR pour drag & drop des objets virtuels](#hit-test)
 - [Exemple avancé drag & drop avec `hit-test`](#hit-test-2)
 - [Exemple `hit-test` combiné à une interaction sur un objet virtuel](#interact) 
+- [Exemple marker-based AR avec `AR.js`](#marker-based) 
 
 
 ## <a name="introduction">Introduction</a> 
@@ -25,9 +26,9 @@ Plusieurs solutions existent, y compris pour le web. Nous allons utiliser ici le
 ## <a name="installation">Installation</a>
 Pour accéder facilement à vos projets depuis une tablette, nous allons utiliser le service [glitch](glitch.com) qui permet d’héberger des web apps gratuitement. 
 Pour faire de la RA dans a-frame, il faut importer la librairie a-frame: 
-`<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>`
+```<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>```
 ainsi que le component [`aframe-ar.js`](https://github.com/chenzlabs/aframe-ar):
-`<script src="https://ghcdn.rawgit.org/chenzlabs/aframe-ar/8a7ee3b/dist/aframe-ar.min.js"></script>`
+```<script src="https://ghcdn.rawgit.org/chenzlabs/aframe-ar/8a7ee3b/dist/aframe-ar.min.js"></script>```
 
 ## <a name="marche-a-suivre">Marche à suivre</a>  
 1. Créez un compte [glitch](https://glitch.com/) si vous souhaitez sauvegarder vos modifications. 
@@ -72,21 +73,21 @@ AFRAME.registerComponent('animate-scale', {
 })
 ```
 2. Sur la page `index.html`, ajouter une ligne pour importer le component que vous avez créé, dans <head>: 
-   `<script src="js/animate-scale.js"></script>`
+   ```<script src="js/animate-scale.js"></script>```
 3. Choisissez une des entity de la a-scene et ajoutez-lui le component:
-   `animate-scale="factor:.3; axe:x; active:1"`
+   ```animate-scale="factor:.3; axe:x; active:1"```
 4. Vous pouvez ajouter plusieurs instances du même component (en l’occurence, un par axe). Il faut ajouter "__" et un nom unique à chaque instance:
    ```
     animate-scale__="factor:.3; axe:x"
     animate-scale__lalala="factor:.3; axe:y"
     animate-scale__123581321="factor:.3; axe:z"
    ```
-
+   
 ## <a name="importer-gltf">Importer des gltf animés et ajouter des lumières dans une scène (page `1-assets.html`)</a>
 1. Sur la page `1-assets.html`, en tant qu’enfant de l’entity qui porte l’`id="objet"`, ajoutez une entity qui contient un `gltf` statique:
-`<a-entity position="0 0 -1" shadow gltf-model="url(https://cdn.glitch.global/36ffed16-a93a-4d6b-a6cd-669447f2a1e9/Triceratops-100k-2048_std_draco.glb?v=1713795783826)"></a-entity>`
+```<a-entity position="0 0 -1" shadow gltf-model="url(https://cdn.glitch.global/36ffed16-a93a-4d6b-a6cd-669447f2a1e9/Triceratops-100k-2048_std_draco.glb?v=1713795783826)"></a-entity>```
 2. Deuxièmement, importez la libairie `a-frame-extras`, qui permet notamment de jouer les animations contenues dans des `gltf`:
-`<script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>`
+```<script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>```
 3. Importez l’asset suivant au debut de votre scène, entre des balises `<a-assets>…</a-assets>`:
 ```
   <a-assets>
@@ -95,21 +96,21 @@ AFRAME.registerComponent('animate-scale', {
 ```
 Notez que cette action n’a pas créé d’entity dans la scène, cela a uniquement permis d’importer une ressource et de garantir son chargement avant le chargement du reste de la page. 
 4. Ajoutez l’entity suivante en tant qu’enfant de l’entity qui porte l’`id="objet"`: 
-`<a-entity gltf-model="#biche" id="directionaltarget" position="-2 0 -1"></a-entity>`
+```<a-entity gltf-model="#biche" id="directionaltarget" position="-2 0 -1"></a-entity>```
 5. Ajoutez le component `animation-mixer` à cette entity pour jouer l’animation contenue dans le gltf:
 6. Ajoutez une entity lumière `<a-light>` à la scène:
-`<a-light type="directional" position="0 0 0" intensity="3.0" target="#directionaltarget"></a-light>`
+```<a-light type="directional" position="0 0 0" intensity="3.0" target="#directionaltarget"></a-light>```
 
 ## <a name="hit-test">Utiliser la fonction `hit-test` de webXR pour drag & drop des objets virtuels (page `3-drag-simple.html`)</a>
  1. Sur la page `3-drag-simple.html`, ajoutez les attributs suivants à la balise `<a-scene>`:
-    `xr-mode-ui="XRMode: ar" webxr="optionalFeatures: hit-test;" ar-hit-test="target:#object;"`
+    ```xr-mode-ui="XRMode: ar" webxr="optionalFeatures: hit-test;" ar-hit-test="target:#object;"```
     Ceci permet d’utiliser la fonctionnalité de "hit-test” de l’API WebXR. On précise l’id de la cible que l’on va tester (dont on va tester la collision avec le pointeur, en l‘occurence le doigt sur l’écran tactile, ou la souris). 
  3. Modifiez l’élévation de la caméra d’a-frame à 1.6 m (actuellement à 0.4 m). 
  4. Ajouter l’id “object” à la primitive `<a-sphere>` dans la scène:
-    `id="object"`
+    ```id="object"```
  5. Testez la fonction “hit-test” en mode RA, sur la tablette. La position de l’objet dans la scène 3D peut désormais être modifiée avec le doigt, en suivant les surfaces détectées par la photogrammétrie de WebXR. 
  6. Extra, si vous êtes rapides. Ajoutez une entity de type "line" à la scène:
-    `<a-entity line="start: 0 0 0; end: 0 0 -2; color: red" line__2="start: 0 0 0; end: 0 0 2; color: green"></a-entity>`
+    ```<a-entity line="start: 0 0 0; end: 0 0 -2; color: red" line__2="start: 0 0 0; end: 0 0 2; color: green"></a-entity>```
 
 ## <a name="hit-test-2">Pour un exemple plus avancé de drag & drop avec le `hit-test` de webXR, avec des objets virtuels et leur ombre projetée (page `3-drag.html`)</a>
 
@@ -168,6 +169,25 @@ Notez que cette action n’a pas créé d’entity dans la scène, cela a unique
 6. Testez sur la tablette en mode RA. La porte devrait s’ouvrir si on s’en approche, ou alors si on clique lorsque le `hit-test` est `true` (=lorsque le curseur est sur la porte).
 7. Vous pouvez modifier les paramètres du component `animation` pour varier vitesse, angle d’ouverture, etc.
 
+## <a name="marker-based">Exemple marker-based AR avec `AR.js` (page `5-marker-based.html`)</a> 
+1. Sur la page `5-marker-based.html`, importez la librairie `aframe-ar.js` dans `<head>`:
+   ```
+   <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+   ```
+2. Sur la balise `<a-scene>`, ajoutez les attributs suivants `embedded arjs`.
+3. Dans la scène, créez une entity primitive rouge de type sphère à l’échelle 0.5 avec une opacité de moitié:
+   ```
+    <a-entity>
+        <a-sphere scale="0.5 0.5 0.5" color="red" opacity="0.5"></a-sphere>
+    </a-entity>
+   ```
+4. Créez un objet camera avec la syntaxe ci-après:
+```
+<a-marker-camera preset="hiro"></a-marker-camera>
+```
+5. La caméra virtuelle se déplace désormais par rapport à un marqueur visuel. Ouvrez le projet sur une tablette ou un mobile et placez le marqueur visuel fourni (imprimé sur papier A4) dans le champ de la caméra.
+6. Le marqueur est disponible [ici](https://github.com/jeromeetienne/AR.js/blob/master/data/images/HIRO.jpg). Il est possible d’en créer de nouveau [ici](https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html). Il est aussi possible de gérer plusieurs marqueurs visuels et de suivre leurs positions. Consultez la [documentation](https://aframe.io/blog/arjs/#how-to-handle-multiple-distinct-markers).
+   
 ---
 [Chapitre suivant : Exercices pratiques de RA avec des géodonnées avec A-Frame](pratique-RA-geo.md)
 ---
