@@ -24,7 +24,7 @@ Plusieurs solutions existent, y compris pour le web. Nous allons utiliser ici le
 
 ---
 ## <a name="installation">Installation</a>
-Pour accéder facilement à vos projets depuis une tablette (RA mobile), nous allons utiliser le service [glitch](glitch.com) qui permet d’héberger des web apps gratuitement. Pour faire de la RA mobile avec glitch, a-frame.js et ar.js, il faut importer la librairie a-frame: 
+Pour accéder facilement à vos projets depuis une tablette (RA mobile), nous allons utiliser le service [glitch](glitch.com) qui permet d’héberger des web apps gratuitement. Pour faire de la RA mobile avec glitch, A-frame.js et ar.js, il faut importer A-frame: 
 ```
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 ```
@@ -33,6 +33,8 @@ ainsi que le component [`aframe-ar.js`](https://github.com/chenzlabs/aframe-ar):
 ```
 <script src="https://ghcdn.rawgit.org/chenzlabs/aframe-ar/8a7ee3b/dist/aframe-ar.min.js"></script>
 ```
+Nous allons compléter quelques exemples ensemble pour s’accoutumer avec les concepts d’A-frame et d’AR.js: [exercices pratiques RA mobile](https://glitch.com/edit/#!/sic1-ar). 
+
 ---
 ## <a name="marche-a-suivre">Marche à suivre</a>  
 1. Créez un compte [glitch](https://glitch.com/) si vous souhaitez sauvegarder vos modifications. 
@@ -41,7 +43,6 @@ ainsi que le component [`aframe-ar.js`](https://github.com/chenzlabs/aframe-ar):
 4. Sur la tablette, allez sur https://***-nom-de-votre-projet[.glitch.me](https://glitch.com/edit/#!/***-nom-de-votre-projet) [sur un navigateur supportant webXR](https://caniuse.com/webxr) pour voir le résultat (vous pouvez également visualisez le résultat sur votre laptop, mais la navigation est limitée au clavier WASD + souris). 
 5. Entrez en mode «RA» au moyen du bouton en bas à droite. Rafraichissez la page pour voir vos modifications sur le projet. 
 
-[exercices pratiques RA mobile](https://glitch.com/edit/#!/sic1-ar)
 ---
 ## <a name="creer-attribuer">Créer et attribuer un component à une entity (page `index.html`)</a<
 Pour commencer, remarquez que la scene A-frame ne comporte rien de particulier. La balise `<a-scene>` a un attribut `vr-mode-ui="enterAREnabled: true"` pour afficher le bouton entrer en RA, mais celui-ci s’affiche par défaut sur les périphériques capables de RA, il n’est donc pas essentiel. La camera n’a pas de `rig` ni de controllers. Remarquez enfin le component `hide-on-enter-ar` attribué à l’entity `<a-sky>`: cette entité n’est plus visible une fois le mode RA activé.
