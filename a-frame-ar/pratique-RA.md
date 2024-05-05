@@ -36,7 +36,7 @@ ainsi que le component [`aframe-ar.js`](https://github.com/chenzlabs/aframe-ar):
 ---
 ## <a name="marche-a-suivre">Marche à suivre</a>  
 1. Créez un compte [glitch](https://glitch.com/) si vous souhaitez sauvegarder vos modifications. 
-2. Sur votre laptop, allez sur [glitch](https://glitch.com/edit/#!/sic1-ar). 
+2. Sur votre laptop, allez sur le [projet d’exercice](https://glitch.com/edit/#!/sic1-ar). 
 3. Cliquez sur «remix» pour créer votre propre copie et éditer le projet. Un nom aléatoire lui sera attribué (vous pouvez le modifier sous «settings»). 
 4. Sur la tablette, allez sur https://***-nom-de-votre-projet[.glitch.me](https://glitch.com/edit/#!/***-nom-de-votre-projet) [sur un navigateur supportant webXR](https://caniuse.com/webxr) pour voir le résultat (vous pouvez également visualisez le résultat sur votre laptop, mais la navigation est limitée au clavier WASD + souris). 
 5. Entrez en mode «RA» au moyen du bouton en bas à droite. Rafraichissez la page pour voir vos modifications sur le projet. 
