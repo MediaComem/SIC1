@@ -19,6 +19,7 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
 
 ## <a name="exemple-1">3. Importer une tile 2D avec Mapzen Tangram</a> 
 ![Mapzen Tangram Component pour A-frame.js](https://github.com/mattrei/aframe-tangram-component/raw/master/doc/example.jpg)
+<img src="[drawing.jpg](https://github.com/mattrei/aframe-tangram-component/raw/master/doc/example.jpg)" alt="Mapzen Tangram Component pour A-frame.js" width="400"/>
 
 1. Ouvrez la page `index.html`. Importer le [component "Mapzen Tangram"](https://github.com/mattrei/aframe-tangram-component?tab=readme-ov-file) dans `head`:
    `<script src="https://unpkg.com/aframe-tangram-component/dist/aframe-tangram-component.min.js"></script>`
