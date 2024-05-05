@@ -18,6 +18,7 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
 - Pour commencer, rendez-vous sur l’url [https://glitch.com/edit/#!/sic1-ar-geo](https://glitch.com/edit/#!/sic1-ar-geo) et créez un clone ("remix") du projet. 
 
 ## <a name="exemple-1">3. Importer une tile 2D avec Mapzen Tangram</a> 
+![Mapzen Tangram Component pour A-frame.js](https://github.com/mattrei/aframe-tangram-component/raw/master/doc/example.jpg)
 
 1. Ouvrez la page `index.html`. Importer le [component "Mapzen Tangram"](https://github.com/mattrei/aframe-tangram-component?tab=readme-ov-file) dans `head`:
    `<script src="https://unpkg.com/aframe-tangram-component/dist/aframe-tangram-component.min.js"></script>`
