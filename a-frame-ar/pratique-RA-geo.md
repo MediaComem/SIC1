@@ -78,6 +78,7 @@ L’utilisation de géodonnées en RA peut se faire de différentes façons, ave
     </script>
    ```
 Notez la méthode `watchPosition()` qui permet d’obtenir (moyennant l’autorisation de l’utilisateur dans le navigateur) les coordonnées géographiques du périphérique. 
+
 5. En tant qu’enfant de l’entity plane qui contient le component `tangram-map`, ajouter une primitive de type sphère avec l’`id="marker"`:
 `<a-sphere id="marker" color="#EF2D5E" position="0 0 0" visible="false" radius="0.1"></a-sphere>`
 
