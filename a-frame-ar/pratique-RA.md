@@ -90,7 +90,7 @@ AFRAME.registerComponent('animate-scale', {
 ---
 ## <a name="importer-gltf">5. Importer des gltf animés et ajouter des lumières dans une scène (page `1-assets.html`)</a>
 1. Sur la page `1-assets.html`, en tant qu’enfant de l’entity qui porte l’`id="objet"`, ajoutez une entity qui contient un `gltf` statique:
-```<a-entity position="0 0 -1" shadow gltf-model="url(https://cdn.glitch.global/36ffed16-a93a-4d6b-a6cd-669447f2a1e9/Triceratops-100k-2048_std_draco.glb?v=1713795783826)"></a-entity>```
+```<a-entity position="0 0 -1" shadow gltf-model="#biche"></a-entity>```
 2. Deuxièmement, importez la libairie `a-frame-extras`, qui permet notamment de jouer les animations contenues dans des `gltf`:
 ```<script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>```
 3. Importez l’asset suivant au debut de votre scène, entre des balises `<a-assets>…</a-assets>`:
@@ -100,6 +100,7 @@ AFRAME.registerComponent('animate-scale', {
   </a-assets>
 ```
 Notez que cette action n’a pas créé d’entity dans la scène, cela a uniquement permis d’importer une ressource et de garantir son chargement avant le chargement du reste de la page. 
+
 4. Ajoutez l’entity suivante en tant qu’enfant de l’entity qui porte l’`id="objet"`: 
 ```<a-entity gltf-model="#biche" id="directionaltarget" position="-2 0 -1"></a-entity>```
 5. Ajoutez le component `animation-mixer` à cette entity pour jouer l’animation contenue dans le gltf:
